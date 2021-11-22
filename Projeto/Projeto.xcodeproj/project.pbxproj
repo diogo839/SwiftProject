@@ -7,9 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C0274A9D47007118B0 /* UserClass.swift */; };
+		7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C5274AA006007118B0 /* cameraViewController.swift */; };
+		7F4AA5C8274AA043007118B0 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C7274AA043007118B0 /* LoginController.swift */; };
+		7F4AA5CA274AA052007118B0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C9274AA052007118B0 /* ViewController.swift */; };
+		7F4AA5CE274AA2F7007118B0 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5CD274AA2F7007118B0 /* Connection.swift */; };
 		7F7ED7EC274300EF00B6AEC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7ED7EB274300EF00B6AEC6 /* AppDelegate.swift */; };
 		7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7ED7ED274300EF00B6AEC6 /* SceneDelegate.swift */; };
-		7F7ED7F0274300EF00B6AEC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7ED7EF274300EF00B6AEC6 /* ViewController.swift */; };
 		7F7ED7F3274300EF00B6AEC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7ED7F1274300EF00B6AEC6 /* Main.storyboard */; };
 		7F7ED7F5274300F000B6AEC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F7ED7F4274300F000B6AEC6 /* Assets.xcassets */; };
 		7F7ED7F8274300F000B6AEC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7ED7F6274300F000B6AEC6 /* LaunchScreen.storyboard */; };
@@ -35,10 +39,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7F4AA5C0274A9D47007118B0 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserClass.swift; path = Projeto/models/UserClass.swift; sourceTree = SOURCE_ROOT; };
+		7F4AA5C5274AA006007118B0 /* cameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
+		7F4AA5C7274AA043007118B0 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		7F4AA5C9274AA052007118B0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = Projeto/ViewController.swift; sourceTree = SOURCE_ROOT; };
+		7F4AA5CD274AA2F7007118B0 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		7F7ED7E8274300EF00B6AEC6 /* Projeto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Projeto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F7ED7EB274300EF00B6AEC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7F7ED7ED274300EF00B6AEC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7F7ED7EF274300EF00B6AEC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7F7ED7F2274300EF00B6AEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F7ED7F4274300F000B6AEC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7F7ED7F7274300F000B6AEC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7F4AA5BF274A9D08007118B0 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				7F4AA5C0274A9D47007118B0 /* UserClass.swift */,
+				7F4AA5CD274AA2F7007118B0 /* Connection.swift */,
+			);
+			name = models;
+			path = Projeto/models;
+			sourceTree = SOURCE_ROOT;
+		};
+		7F4AA5C2274A9E4C007118B0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		7F7ED7DF274300EF00B6AEC6 = {
 			isa = PBXGroup;
 			children = (
@@ -99,9 +124,13 @@
 		7F7ED7EA274300EF00B6AEC6 /* Projeto */ = {
 			isa = PBXGroup;
 			children = (
+				7F4AA5C2274A9E4C007118B0 /* New Group */,
+				7F4AA5C5274AA006007118B0 /* cameraViewController.swift */,
+				7F4AA5C7274AA043007118B0 /* LoginController.swift */,
+				7F4AA5C9274AA052007118B0 /* ViewController.swift */,
+				7F4AA5BF274A9D08007118B0 /* models */,
 				7F7ED7EB274300EF00B6AEC6 /* AppDelegate.swift */,
 				7F7ED7ED274300EF00B6AEC6 /* SceneDelegate.swift */,
-				7F7ED7EF274300EF00B6AEC6 /* ViewController.swift */,
 				7F7ED7F1274300EF00B6AEC6 /* Main.storyboard */,
 				7F7ED7F4274300F000B6AEC6 /* Assets.xcassets */,
 				7F7ED7F6274300F000B6AEC6 /* LaunchScreen.storyboard */,
@@ -258,9 +287,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F7ED7F0274300EF00B6AEC6 /* ViewController.swift in Sources */,
 				7F7ED7EC274300EF00B6AEC6 /* AppDelegate.swift in Sources */,
+				7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */,
 				7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */,
+				7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */,
+				7F4AA5CA274AA052007118B0 /* ViewController.swift in Sources */,
+				7F4AA5C8274AA043007118B0 /* LoginController.swift in Sources */,
+				7F4AA5CE274AA2F7007118B0 /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +472,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9J22PLCR7;
 				INFOPLIST_FILE = Projeto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -458,6 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = C9J22PLCR7;
 				INFOPLIST_FILE = Projeto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
