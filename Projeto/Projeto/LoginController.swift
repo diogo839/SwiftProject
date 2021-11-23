@@ -9,7 +9,7 @@ import UIKit
 
 class LoginController: UIViewController {
 
-    @IBOutlet weak var UsernameBox: UITextField!
+    @IBOutlet weak var usernameBox: UITextField!
     @IBOutlet weak var textBox: UITextField!
     @IBOutlet weak var ErrorLabel: UILabel!
     
@@ -18,10 +18,10 @@ class LoginController: UIViewController {
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         let bootomLine = CALayer()
-        bootomLine.frame = CGRect(x:1, y: UsernameBox.frame.height - 1, width: UsernameBox.frame.width, height: 1.0)
+       // bootomLine.frame = CGRect(x:1, y: usernameBox.frame.height - 1, width: usernameBox.frame.width, height: 1.0)
         bootomLine.backgroundColor = UIColor.gray.cgColor
-        UsernameBox.borderStyle = UITextField.BorderStyle.none
-        UsernameBox.layer.addSublayer(bootomLine)
+        //usernameBox.borderStyle = UITextField.BorderStyle.none
+        //usernameBox.layer.addSublayer(bootomLine)
     }
     
 
@@ -52,14 +52,14 @@ class LoginController: UIViewController {
             }
         
             do{
-                let response = try JSONDecoder().decode(response.self, from: data)
+                let response1 = try JSONDecoder().decode(response.self, from: data)
                 
-                if response.status == "sucess"{
+                if response1.status == "sucess"{
                     DispatchQueue.main.async {
                         let defaults = UserDefaults.standard
                         defaults.register(defaults: ["token":""])
                         defaults.register(defaults: ["username":""])
-                        defaults.set(response.token ?? nil, forKey:"token" )
+                        defaults.set(response1.token ?? nil, forKey:"token" )
                         defaults.set(TextBoxName, forKey:"username" )
                         
                     }
@@ -67,7 +67,7 @@ class LoginController: UIViewController {
                 }else{
                     DispatchQueue.main.async {
                         self.ErrorLabel.textColor = UIColor .red
-                        self.ErrorLabel.text = response.message ?? "Utilizador não encontrado"
+                        self.ErrorLabel.text = response1.message ?? "Utilizador não encontrado"
                     }
                     
                 }
