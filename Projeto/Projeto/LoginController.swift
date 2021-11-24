@@ -11,27 +11,44 @@ class LoginController: UIViewController {
 
     @IBOutlet weak var usernameBox: UITextField!
     @IBOutlet weak var textBox: UITextField!
-    @IBOutlet weak var ErrorLabel: UILabel!
+    @IBOutlet weak var errorLable: UILabel!
     
+    @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        /*self.navigationItem.setHidesBackButton(true, animated: true)
         let bootomLine = CALayer()
        // bootomLine.frame = CGRect(x:1, y: usernameBox.frame.height - 1, width: usernameBox.frame.width, height: 1.0)
         bootomLine.backgroundColor = UIColor.gray.cgColor
         //usernameBox.borderStyle = UITextField.BorderStyle.none
         //usernameBox.layer.addSublayer(bootomLine)
+         
+ */
+        if textBox.text == "" {
+            loginButton.isEnabled = false;
+        }
     }
     
+    @IBAction func LoginButton(_ sender: UIButton) {
+        //Place login code here
+        let username:String = textBox.text!
+        Post(TextBoxName: username)
 
+    }
     
-    @IBAction func LoginSubmit(_ sender: UIButton, forEvent event: UIEvent) {
+    /*@IBAction func loginButton(_ sender: UIButton) {
+        NSLog("Button pressed");
+        errorLable.text="ERRO"
+    }
+    */
+    /*@IBAction func LoginSubmit(_ sender: UIButton, forEvent event: UIEvent) {
         
+        NSLog("Button pressed");
         let value:String = textBox.text!
        Post(TextBoxName: value)
         
-    }
+    }*/
     
     
     
@@ -66,8 +83,8 @@ class LoginController: UIViewController {
                     
                 }else{
                     DispatchQueue.main.async {
-                        self.ErrorLabel.textColor = UIColor .red
-                        self.ErrorLabel.text = response1.message ?? "Utilizador não encontrado"
+                        self.errorLable.textColor = UIColor .red
+                        self.errorLable.text = response1.message ?? "Utilizador não encontrado"
                     }
                     
                 }
