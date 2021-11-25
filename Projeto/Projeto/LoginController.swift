@@ -51,7 +51,13 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
     
     
-    
+    @IBAction func SignUpButton(_ sender: UIButton) {
+        //Place login code here
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "RegisterViewController") as! RegisterViewController
+        self.present(controller, animated: true, completion: nil)
+
+    }
     
     
     @IBAction func LoginButton(_ sender: UIButton) {
