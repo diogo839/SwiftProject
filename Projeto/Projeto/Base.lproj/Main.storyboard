@@ -327,6 +327,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DvH-BA-2t6"/>
+                    <connections>
+                        <outlet property="boxNameField" destination="qZv-Q7-yhs" id="FG5-rV-AQG"/>
+                        <outlet property="createButton" destination="k2H-Go-8Xb" id="khV-pO-fp8"/>
+                        <outlet property="smartBoxIDField" destination="qDq-HT-2h2" id="MxM-Jl-DOK"/>
+                        <outlet property="usernameField" destination="nf3-9o-LAl" id="VZK-vp-hUe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eSZ-bz-xKs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

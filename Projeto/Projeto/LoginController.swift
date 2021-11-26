@@ -27,7 +27,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
     }
     // Functions needed to hide the keyboard when pressing "return" or
     // Touching anywhere in the screen
-    func textFieldShouldReturn(_ textField: UITextField!) -> Bool // called when   'return' key pressed. return NO to ignore.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when   'return' key pressed. return NO to ignore.
     {
           textField.resignFirstResponder()
           return true;
