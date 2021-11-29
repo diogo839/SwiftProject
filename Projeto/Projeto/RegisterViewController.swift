@@ -24,20 +24,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             createButton.isEnabled = false
         }
     }
+    //Function to close keyboard on "return"
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when   'return' key pressed. return NO to ignore.
     {
           textField.resignFirstResponder()
           return true;
     }
 
-    override func touchesBegan(_: Set<UITouch>, with: UIEvent?) {
+    /*override func touchesBegan(_: Set<UITouch>, with: UIEvent?) {
         usernameField.resignFirstResponder()
         smartBoxIDField.resignFirstResponder()
         boxNameField.resignFirstResponder()
 
 
          self.view.endEditing(true)
-    }
+    }*/
     //
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let textbox1 = (usernameField.text! as NSString).replacingCharacters(in: range, with: string)
