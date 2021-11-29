@@ -293,6 +293,9 @@
                                                         </constraints>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <state key="normal" title="Create"/>
+                                                        <connections>
+                                                            <action selector="CreateButton:" destination="6zH-1J-LaR" eventType="touchUpInside" id="4jN-HU-J4y"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igL-9h-B9P">
                                                         <rect key="frame" x="0.0" y="626" width="368" height="30"/>

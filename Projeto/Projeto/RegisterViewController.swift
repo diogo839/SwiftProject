@@ -57,32 +57,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
           return true;
     }
     
-    
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let textbox1 = (usernameField.text! as NSString).replacingCharacters(in: range, with: string)
-        let textbox2 = (smartBoxIDField.text! as NSString).replacingCharacters(in: range, with: string)
+
+    @IBAction func CreateButton(_ sender: Any) {
         
-        if textbox1.isEmpty == false && textbox2.isEmpty == false {
-            createButton.isEnabled = true
-            createButton.alpha = 1.0
-        } else {
-            createButton.isEnabled = false
-            createButton.alpha = 0.5
-        }
-         return true
     }
-    */
     
-   
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
