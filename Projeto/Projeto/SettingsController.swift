@@ -9,14 +9,27 @@ import UIKit
 
 class SettingsController: UIViewController {
 
+    @IBOutlet weak var usernameLable: UILabel!
+    @IBOutlet weak var tokenLable: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
+        usernameLable.text = UserDefaults.standard.string(forKey: "username")
+        tokenLable.text = UserDefaults.standard.string(forKey: "token")
+
 
         // Do any additional setup after loading the view.
     }
     
+    @IBAction func Logout(_ sender: Any) {
+        UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "username")
+        usernameLable.text = UserDefaults.standard.string(forKey: "username")
+        tokenLable.text = UserDefaults.standard.string(forKey: "token")
 
+
+    }
+    
     /*
     // MARK: - Navigation
 

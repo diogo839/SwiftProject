@@ -16,7 +16,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
-        super.viewDidLoad()
+        isLoggedIn()
+        
+    
+        
         usernameTextBox.delegate = self
         loading.isHidden = true;
         if usernameTextBox.text == "" {
@@ -24,6 +27,18 @@ class LoginController: UIViewController, UITextFieldDelegate {
         }
         
         
+    }
+    func isLoggedIn(){
+        if UserDefaults.standard.string(forKey: "token") != ""{
+            NSLog("Entrou")
+        
+            //redirect directly to homepage
+            present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarController"), animated: true, completion: nil)
+        }else{
+            NSLog("Entrou _ 2")
+
+            super.viewDidLoad()
+        }
     }
     // Functions needed to hide the keyboard when pressing "return" or
     // Touching anywhere in the screen
@@ -57,6 +72,11 @@ class LoginController: UIViewController, UITextFieldDelegate {
         let controller = story.instantiateViewController(identifier: "RegisterViewController") as! RegisterViewController
         self.present(controller, animated: true, completion: nil)
 
+    }
+    func redirectToHomepage() {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "MainTabBarController") as! UITabBarController
+        self.present(controller, animated: true, completion: nil)
     }
     
     
@@ -100,9 +120,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         defaults.register(defaults: ["username":""])
                         defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
                         defaults.set(TextBoxName, forKey:"username" )
-                        let story = UIStoryboard(name: "Main", bundle: nil)
-                        let controller = story.instantiateViewController(identifier: "MainTabBarController") as! UITabBarController
-                        self.present(controller, animated: true, completion: nil)
+                        self.redirectToHomepage()
         
                     }
                     
