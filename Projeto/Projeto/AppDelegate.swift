@@ -13,19 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        let token = UserDefaults.standard.object(forKey: "token")
-        
-        if token == nil {
-            let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewController(withIdentifier: "LoginController") as UIViewController
-            self.window = UIWindow(frame: UIScreen.main.bounds)
-            self.window?.rootViewController = initialViewControlleripad
-            self.window?.makeKeyAndVisible()
-
-        }
-        return true
+       return true
     }
+
 
     // MARK: UISceneSession Lifecycle
 

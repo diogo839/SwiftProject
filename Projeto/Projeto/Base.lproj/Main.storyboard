@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Login Controller-->
+        <!--LoginController-->
         <scene sceneID="BCi-8n-Rvs">
             <objects>
-                <viewController storyboardIdentifier="LoginController" autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" id="l6L-vn-3Dw" customClass="LoginController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginController" autoresizesArchivedViewToFullSize="NO" title="LoginController" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="l6L-vn-3Dw" customClass="LoginController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cuc-eV-e7Y">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,10 +299,10 @@
             </objects>
             <point key="canvasLocation" x="1935.9813084112147" y="90.712742980561558"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar Controller-->
         <scene sceneID="IEj-a8-C2R">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" modalPresentationStyle="fullScreen" id="eDS-84-d5t" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" modalPresentationStyle="fullScreen" id="eDS-84-d5t" customClass="MainTabBarController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6az-hB-8ES"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p2H-Ie-rj6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -443,20 +443,14 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Huw-wL-3hl">
-                                                <rect key="frame" x="30" y="124" width="368" height="297"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acF-Ib-ZyC">
-                                                <rect key="frame" x="30" y="429" width="368" height="155"/>
+                                                <rect key="frame" x="30" y="124" width="368" height="155"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Soil humidity 75%" translatesAutoresizingMaskIntoConstraints="NO" id="8MN-DU-tIS">
                                                         <rect key="frame" x="0.0" y="0.0" width="368" height="155"/>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AR" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ph-P3-kQp">
-                                                        <rect key="frame" x="30.000000000000004" y="101.33333333333334" width="38.333333333333343" height="33.666666666666657"/>
+                                                        <rect key="frame" x="30.000000000000004" y="101.33333333333331" width="38.333333333333343" height="33.666666666666657"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -475,8 +469,34 @@
                                                     <constraint firstAttribute="bottom" secondItem="8MN-DU-tIS" secondAttribute="bottom" id="tFd-AN-1tr"/>
                                                 </constraints>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mTM-Cc-ov7">
+                                                <rect key="frame" x="30" y="287" width="368" height="155"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pexels-cottonbro-6266098" translatesAutoresizingMaskIntoConstraints="NO" id="XDg-1f-W0i">
+                                                        <rect key="frame" x="0.0" y="0.0" width="368" height="155"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Planting Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfB-jK-SeR">
+                                                        <rect key="frame" x="30" y="101.33333333333331" width="191.33333333333334" height="33.666666666666657"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="dfB-jK-SeR" secondAttribute="bottom" constant="20" id="0Fs-7a-CVK"/>
+                                                    <constraint firstItem="XDg-1f-W0i" firstAttribute="leading" secondItem="mTM-Cc-ov7" secondAttribute="leading" id="NlS-eI-IRq"/>
+                                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dfB-jK-SeR" secondAttribute="trailing" constant="20" symbolic="YES" id="WWX-xt-gdf"/>
+                                                    <constraint firstAttribute="bottom" secondItem="XDg-1f-W0i" secondAttribute="bottom" id="btN-5X-vgh"/>
+                                                    <constraint firstAttribute="trailing" secondItem="XDg-1f-W0i" secondAttribute="trailing" id="f8B-o8-GV4"/>
+                                                    <constraint firstAttribute="height" constant="155" id="gjn-Dn-HFt"/>
+                                                    <constraint firstItem="XDg-1f-W0i" firstAttribute="top" secondItem="mTM-Cc-ov7" secondAttribute="top" id="p4V-BL-zLt"/>
+                                                    <constraint firstItem="dfB-jK-SeR" firstAttribute="leading" secondItem="mTM-Cc-ov7" secondAttribute="leading" constant="30" id="w4X-mG-iok"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4J-vV-RkY">
-                                                <rect key="frame" x="30" y="592" width="368" height="155"/>
+                                                <rect key="frame" x="30" y="450" width="368" height="297"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="155" id="cK4-rk-ZXS"/>
@@ -512,7 +532,6 @@
                         <outlet property="arImage" destination="8MN-DU-tIS" id="BHv-dM-Sp1"/>
                         <outlet property="arView" destination="acF-Ib-ZyC" id="EXr-cb-WYB"/>
                         <outlet property="navigationBar" destination="cW2-Ak-OhH" id="wpY-Y9-WTy"/>
-                        <outlet property="test" destination="Huw-wL-3hl" id="2n3-09-ow9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxN-0M-XVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -603,6 +622,7 @@
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="logo sized iphone" width="368" height="300"/>
+        <image name="pexels-cottonbro-6266098" width="4974" height="3316"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

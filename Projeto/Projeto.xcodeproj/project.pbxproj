@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B979A43275988B5002FAE0B /* MainTabBarController.swift */; };
 		7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F225CC4274CFCD8002D817E /* RegisterViewController.swift */; };
 		7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C0274A9D47007118B0 /* UserClass.swift */; };
 		7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C5274AA006007118B0 /* cameraViewController.swift */; };
@@ -44,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B979A43275988B5002FAE0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7F225CC4274CFCD8002D817E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7F4AA5C0274A9D47007118B0 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserClass.swift; path = Projeto/models/UserClass.swift; sourceTree = SOURCE_ROOT; };
 		7F4AA5C5274AA006007118B0 /* cameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				B12E826827591C4D0066312B /* BoxListController.swift */,
 				B12E826D27591C630066312B /* SettingsController.swift */,
 				B12E827227591C710066312B /* ARViewController.swift */,
+				1B979A43275988B5002FAE0B /* MainTabBarController.swift */,
 			);
 			path = Projeto;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */,
 				7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */,
 				B12E826E27591C630066312B /* SettingsController.swift in Sources */,
+				1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */,
 				7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */,
 				7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */,
 				7F4AA5CA274AA052007118B0 /* ViewController.swift in Sources */,

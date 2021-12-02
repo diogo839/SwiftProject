@@ -16,30 +16,16 @@ class LoginController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var loginButton: UIButton!
     override func viewDidLoad() {
-        isLoggedIn()
-        
-    
-        
+        super.viewDidLoad()
+
         usernameTextBox.delegate = self
         loading.isHidden = true;
         if usernameTextBox.text == "" {
             loginButton.isEnabled = false;
         }
-        
-        
+            
     }
-    func isLoggedIn(){
-        if UserDefaults.standard.string(forKey: "token") != ""{
-            NSLog("Entrou")
-        
-            //redirect directly to homepage
-            present(UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "MainTabBarController"), animated: true, completion: nil)
-        }else{
-            NSLog("Entrou _ 2")
 
-            super.viewDidLoad()
-        }
-    }
     // Functions needed to hide the keyboard when pressing "return" or
     // Touching anywhere in the screen
     func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when   'return' key pressed. return NO to ignore.
