@@ -1,5 +1,5 @@
 //
-//  HomepageController.swift
+//  ARViewController.swift
 //  Projeto
 //
 //  Created by Eduarda Joana Ferreira Ramos on 02/12/2021.
@@ -7,9 +7,8 @@
 
 import UIKit
 
-class HomepageController: UIViewController {
+class ARViewController: UIViewController {
 
-    @IBOutlet weak var navigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true

@@ -301,13 +301,14 @@
         <!--Tab Bar Controller-->
         <scene sceneID="IEj-a8-C2R">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" id="eDS-84-d5t" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" modalPresentationStyle="fullScreen" id="eDS-84-d5t" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="6az-hB-8ES"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p2H-Ie-rj6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.73809570069999997" green="0.88433259730000002" blue="0.45058518650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.73809570069999997" green="0.88433259730000002" blue="0.45058518650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="iF2-3q-Jt0" kind="relationship" relationship="viewControllers" id="jA4-c5-bsU"/>
@@ -323,7 +324,7 @@
         <!--Box List-->
         <scene sceneID="dhI-lf-r64">
             <objects>
-                <navigationController id="RRy-c1-Ngq" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="RRy-c1-Ngq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Box List" image="list.bullet" catalog="system" id="t9x-h8-FHW"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NT8-qV-48P">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -356,7 +357,7 @@
         <scene sceneID="ChG-63-5sy">
             <objects>
                 <navigationController id="zgb-ks-gWi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape.fill" catalog="system" id="rbJ-1n-eYe"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gearshape" catalog="system" id="rbJ-1n-eYe"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oXj-G6-cOv">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -372,7 +373,7 @@
         <!--AR-->
         <scene sceneID="8XM-8J-0rF">
             <objects>
-                <navigationController id="le0-sj-gJu" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="le0-sj-gJu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="AR" image="camera.fill" catalog="system" id="Mwk-cP-8ZF"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pe1-1B-AiL">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -389,7 +390,7 @@
         <!--Homepage-->
         <scene sceneID="5jY-EE-JQP">
             <objects>
-                <navigationController id="iF2-3q-Jt0" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="iF2-3q-Jt0" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Homepage" image="house.fill" catalog="system" id="KQK-B2-JG1"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="q6Y-iP-vax">
                         <rect key="frame" x="0.0" y="44" width="428" height="44"/>
@@ -403,45 +404,30 @@
             </objects>
             <point key="canvasLocation" x="2045" y="794"/>
         </scene>
-        <!--View Controller-->
+        <!--Homepage Controller-->
         <scene sceneID="PZn-TN-3KU">
             <objects>
-                <viewController id="4C2-6L-Q69" sceneMemberID="viewController">
+                <viewController id="4C2-6L-Q69" customClass="HomepageController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="anm-80-qLf">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U9Z-nY-5G7">
-                                <rect key="frame" x="177" y="200" width="75" height="30"/>
-                                <state key="normal" title="Homepage"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLR-GM-7A7">
-                                <rect key="frame" x="193" y="293" width="42" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vcN-dg-Cse"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="U9Z-nY-5G7" firstAttribute="top" secondItem="vcN-dg-Cse" secondAttribute="top" constant="144" id="2w4-d7-Xsl"/>
-                            <constraint firstItem="U9Z-nY-5G7" firstAttribute="leading" secondItem="vcN-dg-Cse" secondAttribute="leading" constant="177" id="4JB-Eq-cEg"/>
-                            <constraint firstItem="U9Z-nY-5G7" firstAttribute="centerX" secondItem="anm-80-qLf" secondAttribute="centerX" id="O7X-SM-LYx"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="cW2-Ak-OhH"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="cW2-Ak-OhH" id="wpY-Y9-WTy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxN-0M-XVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2038.3177570093458" y="1451.4038876889849"/>
+            <point key="canvasLocation" x="2044" y="1464"/>
         </scene>
-        <!--View Controller-->
+        <!--Box List Controller-->
         <scene sceneID="hEJ-4K-qcf">
             <objects>
-                <viewController id="VbJ-2L-10t" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="i7a-na-z71">
+                <viewController storyboardIdentifier="BoxListController" id="VbJ-2L-10t" customClass="BoxListController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i7a-na-z71" customClass="Box">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="aAX-8X-1Aa"/>
@@ -456,7 +442,7 @@
         <!--View Controller-->
         <scene sceneID="SgE-zB-K8k">
             <objects>
-                <viewController id="PKb-xJ-2bh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ARController" id="PKb-xJ-2bh" customClass="ARViewController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1iW-km-aL6">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -469,10 +455,10 @@
             </objects>
             <point key="canvasLocation" x="3420" y="1477"/>
         </scene>
-        <!--View Controller-->
+        <!--Settings Controller-->
         <scene sceneID="FnQ-6p-6x5">
             <objects>
-                <viewController id="16A-Ua-AjJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsController" id="16A-Ua-AjJ" customClass="SettingsController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mzj-hB-UCe">
                         <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -488,7 +474,7 @@
     </scenes>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="121"/>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="logo sized iphone" width="368" height="300"/>
