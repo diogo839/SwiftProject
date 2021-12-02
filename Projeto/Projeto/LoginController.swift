@@ -100,7 +100,10 @@ class LoginController: UIViewController, UITextFieldDelegate {
                         defaults.register(defaults: ["username":""])
                         defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
                         defaults.set(TextBoxName, forKey:"username" )
-                        
+                        let story = UIStoryboard(name: "Main", bundle: nil)
+                        let controller = story.instantiateViewController(identifier: "MainTabBarController") as! UITabBarController
+                        self.present(controller, animated: true, completion: nil)
+        
                     }
                     
                 }else{

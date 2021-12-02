@@ -20,6 +20,7 @@
 		7F7ED7F8274300F000B6AEC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F7ED7F6274300F000B6AEC6 /* LaunchScreen.storyboard */; };
 		7F7ED803274300F000B6AEC6 /* ProjetoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7ED802274300F000B6AEC6 /* ProjetoTests.swift */; };
 		7F7ED80E274300F000B6AEC6 /* ProjetoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F7ED80D274300F000B6AEC6 /* ProjetoUITests.swift */; };
+		B10506E427590A2200062C91 /* HomepageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B10506E327590A2200062C91 /* HomepageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		7F7ED809274300F000B6AEC6 /* ProjetoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F7ED80D274300F000B6AEC6 /* ProjetoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoUITests.swift; sourceTree = "<group>"; };
 		7F7ED80F274300F000B6AEC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B10506E327590A2200062C91 /* HomepageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				7F7ED7F4274300F000B6AEC6 /* Assets.xcassets */,
 				7F7ED7F6274300F000B6AEC6 /* LaunchScreen.storyboard */,
 				7F7ED7F9274300F000B6AEC6 /* Info.plist */,
+				B10506E327590A2200062C91 /* HomepageController.swift */,
 			);
 			path = Projeto;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F7ED7EC274300EF00B6AEC6 /* AppDelegate.swift in Sources */,
+				B10506E427590A2200062C91 /* HomepageController.swift in Sources */,
 				7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */,
 				7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */,
 				7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */,
