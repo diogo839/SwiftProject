@@ -16,6 +16,7 @@ class MainTabBarController: UITabBarController {
         }else{
             super.viewDidLoad()
         }
+        
 
         // Do any additional setup after loading the view.
     }
