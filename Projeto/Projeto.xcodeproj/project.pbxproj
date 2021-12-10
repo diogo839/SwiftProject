@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B08D5142761807400007527 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B08D5132761807400007527 /* CollectionViewController.swift */; };
+		1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B752837275E62BF003EF17C /* ButtonCell.swift */; };
+		1B79556827625AF900914A88 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79556727625AF900914A88 /* BoxListCell.swift */; };
 		1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B979A43275988B5002FAE0B /* MainTabBarController.swift */; };
 		7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F225CC4274CFCD8002D817E /* RegisterViewController.swift */; };
 		7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C0274A9D47007118B0 /* UserClass.swift */; };
@@ -46,6 +49,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1B08D5132761807400007527 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1B752837275E62BF003EF17C /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		1B79556727625AF900914A88 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
 		1B979A43275988B5002FAE0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		7F225CC4274CFCD8002D817E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7F4AA5C0274A9D47007118B0 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserClass.swift; path = Projeto/models/UserClass.swift; sourceTree = SOURCE_ROOT; };
@@ -98,6 +104,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B752833275E628B003EF17C /* Homepage */ = {
+			isa = PBXGroup;
+			children = (
+				1B752837275E62BF003EF17C /* ButtonCell.swift */,
+				1B08D5132761807400007527 /* CollectionViewController.swift */,
+			);
+			path = Homepage;
+			sourceTree = "<group>";
+		};
+		1B75283F275E74CA003EF17C /* images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		1B79556627625ADA00914A88 /* BoxList */ = {
+			isa = PBXGroup;
+			children = (
+				1B79556727625AF900914A88 /* BoxListCell.swift */,
+			);
+			path = BoxList;
+			sourceTree = "<group>";
+		};
 		7F4AA5BF274A9D08007118B0 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +161,9 @@
 		7F7ED7EA274300EF00B6AEC6 /* Projeto */ = {
 			isa = PBXGroup;
 			children = (
+				1B79556627625ADA00914A88 /* BoxList */,
+				1B75283F275E74CA003EF17C /* images */,
+				1B752833275E628B003EF17C /* Homepage */,
 				7F4AA5C5274AA006007118B0 /* cameraViewController.swift */,
 				7F4AA5C7274AA043007118B0 /* LoginController.swift */,
 				7F4AA5C9274AA052007118B0 /* ViewController.swift */,
@@ -304,10 +337,13 @@
 				B12E826927591C4D0066312B /* BoxListController.swift in Sources */,
 				B10506E427590A2200062C91 /* HomepageController.swift in Sources */,
 				B12E827327591C710066312B /* ARViewController.swift in Sources */,
+				1B08D5142761807400007527 /* CollectionViewController.swift in Sources */,
 				7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */,
 				7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */,
 				B12E826E27591C630066312B /* SettingsController.swift in Sources */,
 				1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */,
+				1B79556827625AF900914A88 /* BoxListCell.swift in Sources */,
+				1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */,
 				7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */,
 				7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */,
 				B11C6E53275A61BD002DF5D3 /* SettingsNavigationController.swift in Sources */,
