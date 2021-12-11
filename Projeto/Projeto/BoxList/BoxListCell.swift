@@ -8,7 +8,12 @@
 import UIKit
 
 class BoxListCell: UICollectionViewCell {
-    @IBOutlet weak var boxListCell: UIView!
     @IBOutlet weak var boxName: UILabel!
+    @IBOutlet weak var BoxCell: UIView!
+    var identifier = "Custom cell"
     
+    func setup(with box: Box)  {
+        boxName.text = box.Nome
+        identifier = box.Id
+    }
 }

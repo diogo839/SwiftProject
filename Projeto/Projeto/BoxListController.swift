@@ -4,6 +4,7 @@
 //
 //  Created by Eduarda Joana Ferreira Ramos on 02/12/2021.
 //
+	
 
 import UIKit
 struct Box: Decodable{
@@ -17,19 +18,25 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         return numberBoxes
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
-        
-        return CGSize(width: 130, height: 130)
-        
+        return CGSize(width: 145, height: 145)
+    }
+ 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = boxList.dequeueReusableCell(withReuseIdentifier: "boxCell", for: indexPath) as! BoxListCell
+       
         cell.contentView.layer.cornerRadius = 10
         cell.contentView.layer.borderWidth = 1.0
+        //cell.contentView.layer.backgroundColor = CGColor(red: 188, green: 221, blue: 121, alpha: 1)
+        cell.layer.backgroundColor = CGColor(red: 188, green: 221, blue: 121, alpha: 1)
         
-
+        cell.layer.cornerRadius = 10
+        
         cell.contentView.layer.borderColor = UIColor.clear.cgColor
         cell.contentView.layer.masksToBounds = true
 
@@ -39,33 +46,30 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         cell.layer.shadowOpacity = 1.0
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
+ 
         /*
         if indexPath.row == 0 {
             // AR BUTTON
             cell.boxName.text = "Add new"
         }
- */
+        */
+        cell.setup(with: boxes[indexPath.row])
         
-        cell.boxName.text = boxes[indexPath.row].Nome
-        
-        
-     
         
         return cell
     }
-    
-    
+
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("item at \(indexPath.section)/\(indexPath.item) tapped")
-        let cell = boxList.cellForItem(at: indexPath)
-        print(cell)
-       // print(boxes[cell])
-        
+        print(boxes[indexPath.row].Id)
+
       }
     
     var boxes = [Box]()
     var numberBoxes = 0
+    
+    
+        
 
     private func Post(){
         guard let ConUrl = URL(string: url + "/api/GetBox/box/all") else { return}
@@ -90,20 +94,14 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
               }
 
              do {
-                //print("Data:")
-              
+        
                 self.boxes = try JSONDecoder().decode([Box].self, from: data)
                 numberBoxes = boxes.count
+                
+                boxes.insert(Box.init(Nome: "➕ Add New", Id: "0"), at: 0)
                 DispatchQueue.main.async {
                     self.boxList.reloadData()
                 }
-                
-                /*if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    numberBoxes = json.count
-                    DispatchQueue.main.async {
-                        self.boxList.reloadData()
-                    }
-                }*/
              } catch let error {
                print(error.localizedDescription)
              }
@@ -112,14 +110,10 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
           task.resume()
         
     }
-    
-    
-    
 
     @IBOutlet weak var boxList: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationItem!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         Post()
@@ -127,12 +121,8 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         boxList.delegate = self;
         boxList.dataSource = self;
 
-    
     }
-    
- 
-    
-    
+
     struct response:Codable {
         let status:String
         let list:String??;

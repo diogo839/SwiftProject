@@ -65,8 +65,8 @@ class HomepageController: UIViewController, UICollectionViewDelegate, UICollecti
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        headerCollectionView.delegate = self;
-        headerCollectionView.dataSource = self;
+        //headerCollectionView.delegate = self;
+        //headerCollectionView.dataSource = self;
         
     }
 }
