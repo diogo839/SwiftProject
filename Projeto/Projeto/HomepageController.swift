@@ -59,14 +59,14 @@ class HomepageController: UIViewController, UICollectionViewDelegate, UICollecti
      
     @IBOutlet weak var navigationBar: UINavigationItem!
     
+    
     @IBOutlet weak var headerCollectionView: UICollectionView!
    
-    @IBOutlet weak var height: NSLayoutConstraint!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
-        //headerCollectionView.delegate = self;
-        //headerCollectionView.dataSource = self;
+        headerCollectionView.delegate = self;
+        headerCollectionView.dataSource = self;
         
     }
 }
