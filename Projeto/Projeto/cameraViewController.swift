@@ -421,6 +421,7 @@ private func qrScanner(){
             }
         
             do{
+<<<<<<< HEAD
                 let response1 = try JSONDecoder().decode(response.self, from: data)
               
                 if response1.status == "sucess"{
@@ -431,6 +432,18 @@ private func qrScanner(){
                         self.session.stopRunning()
                         self.view.willRemoveSubview(self.view1)
                         self.makeAr(Request: response1.data)
+=======
+                let response = try JSONDecoder().decode(response.self, from: data)
+              
+                if response.status == "sucess"{
+                    DispatchQueue.main.async {
+                        
+                        
+                        print(response)
+                        self.session.stopRunning()
+                        self.view.willRemoveSubview(self.view1)
+                        self.makeAr(Request: response.data)
+>>>>>>> main
                         
                     }
                     
