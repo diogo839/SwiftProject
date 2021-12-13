@@ -63,14 +63,16 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(boxes[indexPath.row].Id)
         if(boxes[indexPath.row].Id == "0"){
-            //let addNew = AddNewBoxViewController()
-            //addNew.modalTransitionStyle = .crossDissolve
-            //present(addNew, animated: true)
+        
             let story = UIStoryboard(name: "Main", bundle: nil)
             let controller = story.instantiateViewController(identifier: "AddNewBoxViewController") as! AddNewBoxViewController
             self.present(controller, animated: true, completion: nil)
 
             
+        }else{
+            let story = UIStoryboard(name: "Main", bundle: nil)
+            let controller = story.instantiateViewController(identifier: "BoxDetailsViewController") as! BoxDetailsViewController
+            self.present(controller, animated: true, completion: nil)
         }
 
       }

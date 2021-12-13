@@ -13,6 +13,7 @@
 		1B79556827625AF900914A88 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79556727625AF900914A88 /* BoxListCell.swift */; };
 		1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B979A43275988B5002FAE0B /* MainTabBarController.swift */; };
 		1BE83A552763AB76003D4EEA /* BoxListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE83A542763AB76003D4EEA /* BoxListCollectionViewController.swift */; };
+		1BF81B2327679A2F00149545 /* BoxDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF81B2227679A2F00149545 /* BoxDetailsViewController.swift */; };
 		7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F225CC4274CFCD8002D817E /* RegisterViewController.swift */; };
 		7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C0274A9D47007118B0 /* UserClass.swift */; };
 		7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4AA5C5274AA006007118B0 /* cameraViewController.swift */; };
@@ -57,6 +58,7 @@
 		1B79556727625AF900914A88 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
 		1B979A43275988B5002FAE0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1BE83A542763AB76003D4EEA /* BoxListCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCollectionViewController.swift; sourceTree = "<group>"; };
+		1BF81B2227679A2F00149545 /* BoxDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxDetailsViewController.swift; sourceTree = "<group>"; };
 		7F225CC4274CFCD8002D817E /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7F4AA5C0274A9D47007118B0 /* UserClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserClass.swift; path = Projeto/models/UserClass.swift; sourceTree = SOURCE_ROOT; };
 		7F4AA5C5274AA006007118B0 /* cameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				1B79556727625AF900914A88 /* BoxListCell.swift */,
 				1BE83A542763AB76003D4EEA /* BoxListCollectionViewController.swift */,
 				1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */,
+				1BF81B2227679A2F00149545 /* BoxDetailsViewController.swift */,
 			);
 			path = BoxList;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				7F4AA5CA274AA052007118B0 /* ViewController.swift in Sources */,
 				7F4AA5C8274AA043007118B0 /* LoginController.swift in Sources */,
 				7F4AA5CE274AA2F7007118B0 /* Connection.swift in Sources */,
+				1BF81B2327679A2F00149545 /* BoxDetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,7 +545,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ipleiria.pt.Projeto;
+				PRODUCT_BUNDLE_IDENTIFIER = ipleiria.pt.Projet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,14 +558,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = MV6278948U;
+				DEVELOPMENT_TEAM = C9J22PLCR7;
 				INFOPLIST_FILE = Projeto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ipleiria.pt.Projeto;
+				PRODUCT_BUNDLE_IDENTIFIER = ipleiria.pt.Projet;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

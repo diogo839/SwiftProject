@@ -13,6 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var smartBoxIDField: UITextField!
     @IBOutlet weak var boxNameField: UITextField!
+    @IBOutlet weak var erroMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,74 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     }
     
 
-    @IBAction func CreateButton(_ sender: Any) {
+    @IBAction func CreateButton(_ sender: UIButton) {
+        erroMessage.text=""
+        Post(BoxName: boxNameField.text! , Usename: usernameField.text!, BoxId: smartBoxIDField.text ?? "box")
+        
+    }
+    
+    
+    
+    
+    
+    private func Post(BoxName:String,Usename:String,BoxId:String){
+        guard let ConUrl = URL(string: url + "/api/addUser") else { return}
+        
+        var request=URLRequest(url: ConUrl )
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable]=[
+            "name":BoxName,
+            "id":BoxId,
+            "namebox":BoxName
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        let task = URLSession.shared.dataTask(with: request) { data,_,error in guard let data = data , error == nil else {
+                return
+            }
+        
+            do{
+                let responsePostRequest = try JSONDecoder().decode(responseCreateUser.self, from: data)
+                NSLog(responsePostRequest.status)
+                print(responsePostRequest)
+                if responsePostRequest.status == "sucess"{
+                   
+                    DispatchQueue.main.async {
+                        let defaults = UserDefaults.standard
+                        defaults.register(defaults: ["token":""])
+                        defaults.register(defaults: ["username":""])
+                        defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
+                        defaults.set(BoxName, forKey:"username" )
+                        self.redirectToHomepage()
+    
+                    }
+                    
+                }else{
+                    
+                    DispatchQueue.main.async {
+                        self.erroMessage.text=responsePostRequest.message as! String
+                    }
+                }
+            }catch{
+                print(error)
+            }
+        }
+        task.resume()
+        
+    }
+    
+    func redirectToHomepage() {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "MainTabBarController") as! UITabBarController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    
+    struct responseCreateUser:Codable {
+        let status:String
+        let token:String??;
+        let message:String?;
         
     }
     

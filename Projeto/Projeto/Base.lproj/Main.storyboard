@@ -149,10 +149,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bLX-Rd-Lpe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W1W-4b-J9t">
-                                                <rect key="frame" x="30" y="8" width="354" height="656"/>
+                                                <rect key="frame" x="30" y="8" width="354" height="684.33333333333337"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-th-2nq">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
@@ -244,8 +244,14 @@
                                                             <constraint firstAttribute="height" constant="30" id="jS7-5b-zwa"/>
                                                         </constraints>
                                                     </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es4-Nn-CdV">
+                                                        <rect key="frame" x="0.0" y="568" width="354" height="20.333333333333371"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2H-Go-8Xb">
-                                                        <rect key="frame" x="0.0" y="568" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="596.33333333333337" width="354" height="50"/>
                                                         <color key="backgroundColor" red="0.73809570069999997" green="0.88433259730000002" blue="0.45058518650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Yct-QL-JFF"/>
@@ -257,7 +263,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igL-9h-B9P">
-                                                        <rect key="frame" x="0.0" y="626" width="354" height="30"/>
+                                                        <rect key="frame" x="0.0" y="654.33333333333337" width="354" height="30"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="dCg-jq-eZD"/>
@@ -292,6 +298,7 @@
                     <connections>
                         <outlet property="boxNameField" destination="qZv-Q7-yhs" id="FG5-rV-AQG"/>
                         <outlet property="createButton" destination="k2H-Go-8Xb" id="khV-pO-fp8"/>
+                        <outlet property="erroMessage" destination="Es4-Nn-CdV" id="LKb-E2-u5b"/>
                         <outlet property="smartBoxIDField" destination="qDq-HT-2h2" id="MxM-Jl-DOK"/>
                         <outlet property="usernameField" destination="nf3-9o-LAl" id="VZK-vp-hUe"/>
                     </connections>
@@ -379,12 +386,12 @@
         <!--AR-->
         <scene sceneID="8XM-8J-0rF">
             <objects>
-                <navigationController modalPresentationStyle="fullScreen" navigationBarHidden="YES" id="le0-sj-gJu" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="le0-sj-gJu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="AR" id="Mwk-cP-8ZF">
                         <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
-                    <nil key="simulatedTopBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pe1-1B-AiL">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -642,6 +649,7 @@
                         <outlet property="boxList" destination="pKX-Rh-Xvw" id="hDi-MJ-xP5"/>
                         <outlet property="navigationBar" destination="gsy-0t-U9x" id="Trg-1e-Dhw"/>
                         <segue destination="PxL-zJ-0A6" kind="presentation" id="niC-Fv-zOz"/>
+                        <segue destination="BM6-OB-9hl" kind="show" id="NgH-8a-efv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hsI-OK-a4k" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -693,7 +701,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEn-CZ-TwL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2769.5652173913045" y="2287.5"/>
+            <point key="canvasLocation" x="2045" y="2292"/>
+        </scene>
+        <!--Box Details View Controller-->
+        <scene sceneID="rQ2-eq-ZAm">
+            <objects>
+                <viewController storyboardIdentifier="BoxDetailsViewController" modalPresentationStyle="fullScreen" id="BM6-OB-9hl" customClass="BoxDetailsViewController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0dc-0J-Q2S" customClass="Bo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="5of-ft-MiF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kL9-cy-Uhf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DMA-7I-Ohb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2807" y="2307"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SgE-zB-K8k">
@@ -705,11 +729,18 @@
                         <viewLayoutGuide key="safeArea" id="Z6b-Oh-lyr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LLS-za-Hc5"/>
+                    <navigationItem key="navigationItem" id="LLS-za-Hc5">
+                        <barButtonItem key="leftBarButtonItem" title="Water" id="1TO-f3-7bN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Refresh" id="7hn-qr-Hb4"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="RefreshButton" destination="7hn-qr-Hb4" id="Ckp-qY-t5x"/>
+                        <outlet property="WaterButton" destination="1TO-f3-7bN" id="ZBU-6K-eYk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AaA-jJ-IqK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3420" y="1477"/>
+            <point key="canvasLocation" x="3428" y="1465"/>
         </scene>
         <!--Settings Controller-->
         <scene sceneID="FnQ-6p-6x5">

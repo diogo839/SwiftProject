@@ -1,5 +1,5 @@
 //
-//  AddNewBoxViewController.swift
+//  BoxDetailsViewController.swift
 //  Projeto
 //
 //  Created by Eduarda Ramos on 13/12/2021.
@@ -7,11 +7,11 @@
 
 import UIKit
 
-class AddNewBoxViewController: UIViewController {
+class BoxDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
     
