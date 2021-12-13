@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B08D5142761807400007527 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B08D5132761807400007527 /* CollectionViewController.swift */; };
+		1B6FD45D27674E5A00992570 /* AddNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */; };
 		1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B752837275E62BF003EF17C /* ButtonCell.swift */; };
 		1B79556827625AF900914A88 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79556727625AF900914A88 /* BoxListCell.swift */; };
 		1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B979A43275988B5002FAE0B /* MainTabBarController.swift */; };
@@ -51,6 +52,7 @@
 
 /* Begin PBXFileReference section */
 		1B08D5132761807400007527 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoxViewController.swift; sourceTree = "<group>"; };
 		1B752837275E62BF003EF17C /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		1B79556727625AF900914A88 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
 		1B979A43275988B5002FAE0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			children = (
 				1B79556727625AF900914A88 /* BoxListCell.swift */,
 				1BE83A542763AB76003D4EEA /* BoxListCollectionViewController.swift */,
+				1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */,
 			);
 			path = BoxList;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B6FD45D27674E5A00992570 /* AddNewBoxViewController.swift in Sources */,
 				7F7ED7EC274300EF00B6AEC6 /* AppDelegate.swift in Sources */,
 				B12E826927591C4D0066312B /* BoxListController.swift in Sources */,
 				B10506E427590A2200062C91 /* HomepageController.swift in Sources */,
