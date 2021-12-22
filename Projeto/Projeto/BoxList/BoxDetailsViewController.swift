@@ -8,11 +8,22 @@
 import UIKit
 
 class BoxDetailsViewController: UIViewController {
-
+    var selectedBox:Box = Box.init(Nome: "", Id: "1")
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var NavigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
+        label.text = selectedBox.Id
+        
 
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          self.navigationController?.navigationBar.isHidden = false
+      
     }
     
 

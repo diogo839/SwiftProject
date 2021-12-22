@@ -14,6 +14,7 @@ struct Box: Decodable{
 
 class BoxListController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
+    var programVar : Box?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return numberBoxes
     }
@@ -47,14 +48,7 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath
  
-        /*
-        if indexPath.row == 0 {
-            // AR BUTTON
-            cell.boxName.text = "Add new"
-        }
-        */
         cell.setup(with: boxes[indexPath.row])
-        
         
         return cell
     }
@@ -70,17 +64,22 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
 
             
         }else{
-            let story = UIStoryboard(name: "Main", bundle: nil)
-            let controller = story.instantiateViewController(identifier: "BoxDetailsViewController") as! BoxDetailsViewController
-            self.present(controller, animated: true, completion: nil)
+            programVar = boxes[indexPath.row]
+            performSegue(withIdentifier: "BoxDetails", sender: self)
+  
         }
 
       }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let boxDetailsVC = segue.destination as? BoxDetailsViewController else {return}
+        boxDetailsVC.selectedBox = programVar!
+        segue.destination.navigationItem.title = programVar?.Nome
+       
+    }
+    
     
     var boxes = [Box]()
     var numberBoxes = 0
-    
-    
         
 
     private func Post(){
@@ -122,6 +121,7 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
           task.resume()
         
     }
+    
 
     @IBOutlet weak var boxList: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationItem!
@@ -133,6 +133,12 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         boxList.delegate = self;
         boxList.dataSource = self;
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          
+          self.navigationController?.navigationBar.isHidden = true
+      
     }
 
     struct response:Codable {
