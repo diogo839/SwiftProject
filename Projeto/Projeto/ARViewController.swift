@@ -1,9 +1,3 @@
-//
-//  ARViewController.swift
-//  Projeto
-//
-//  Created by Eduarda Joana Ferreira Ramos on 02/12/2021.
-//
 import UIKit
 import AVFoundation
 import RealityKit
@@ -222,7 +216,7 @@ private func qrScanner(){
         
         //measureTitle2
       
-        let measuretitle2 = MeshResource.generateText( "humidade: \(Request.Humidade) humidade Ideal: \(Request.HumidadeIdeal) ", extrusionDepth: 0.001, font: .systemFont(ofSize: 0.08), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
+        let measuretitle2 = MeshResource.generateText( "humidade: \(Request.Humidade) Humidade Ideal: \(Request.HumidadeIdeal) ", extrusionDepth: 0.001, font: .systemFont(ofSize: 0.08), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
         let measuretitle2Material = SimpleMaterial(color: .black, isMetallic: false)
         let measuretitle2Entity = ModelEntity(mesh: measuretitle2, materials: [measuretitle2Material])
         
@@ -280,7 +274,7 @@ private func qrScanner(){
       
         
         
-        let measuretitle3 = MeshResource.generateText( "luminosidade: \(Request.Luminosidade) luminosidade Ideal: \(Request.LuminosidadeIdeal) ", extrusionDepth: 0.001, font: .systemFont(ofSize: 0.08), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
+        let measuretitle3 = MeshResource.generateText( "Luminosidade: \(Request.Luminosidade) Luminosidade Ideal: \(Request.LuminosidadeIdeal) ", extrusionDepth: 0.001, font: .systemFont(ofSize: 0.08), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
         let measuretitle3Material = SimpleMaterial(color: .black, isMetallic: false)
         let measuretitle3Entity = ModelEntity(mesh: measuretitle3, materials: [measuretitle3Material])
         
@@ -331,11 +325,73 @@ private func qrScanner(){
         arView.scene.addAnchor(measure3barMark)
         arView.scene.addAnchor(measure3IdealAnchor)
         
+        
+        
+        //measureTitle4
+      
+        
+        
+        let measuretitle4 = MeshResource.generateText( "Humidade do solo : \(Request.HumidadeSolo) Humidade do solo ideal : \(Request.HumidadeSoloIdeal) ", extrusionDepth: 0.001, font: .systemFont(ofSize: 0.08), containerFrame: CGRect.zero, alignment: .center, lineBreakMode: .byCharWrapping)
+        let measuretitle4Material = SimpleMaterial(color: .black, isMetallic: false)
+        let measuretitle4Entity = ModelEntity(mesh: measuretitle4, materials: [measuretitle4Material])
+        
+      
+        measuretitle4Entity.transform.rotation *= simd_quatf(angle: radius , axis: SIMD3(x: 1, y: 0, z: 0))
+        let measuretitle4Anchor = AnchorEntity(world: SIMD3(x: -1, y: -1.4, z: 0))
+        measuretitle4Anchor.addChild(measuretitle4Entity)
+        arView.scene.addAnchor(measuretitle4Anchor)
+        
+        
+        //measure4
+        let measure40mark = SimpleMaterial(color: .black,roughness: 0, isMetallic: false)
+        let Mark40 = MeshResource.generatePlane(width: 0.01 , depth: 0.1, cornerRadius:0.005)
+        let measure40Entety = ModelEntity(mesh: Mark40 , materials: [measure40mark])
+        
+        let measurebar4 = SimpleMaterial(color: .lightGray,roughness:0, isMetallic: false)
+        let measurebar4Plane = MeshResource.generatePlane(width: 2 , depth: 0.1, cornerRadius:0.005)
+        let measurebar4Entety = ModelEntity(mesh: measurebar4Plane , materials: [measurebar4])
+        
+        let measure4Material:SimpleMaterial!
+        var humidadeSolo:Float!
+        
+        if(Request.HumidadeSolo<0){
+            humidadeSolo = Request.HumidadeSolo * -1
+            measure4Material = SimpleMaterial(color: .red,roughness: 0, isMetallic: false)
+        }else{
+            humidadeSolo = Request.HumidadeSolo
+             measure4Material = SimpleMaterial(color: .green,roughness: 0, isMetallic: false)
+        }
+        let measure4 = MeshResource.generatePlane(width: humidadeSolo/1000.0 , depth: 0.1, cornerRadius:0.005)
+        let measure4Ideal = MeshResource.generatePlane(width: 0.01 , depth: 0.1, cornerRadius:0.005)
+        let measure4IdealMaterial = SimpleMaterial(color: .red,roughness: 0, isMetallic: false)
+        let measure4IdealEntety = ModelEntity(mesh: measure4Ideal, materials: [measure4IdealMaterial])
+        let measure4Entity = ModelEntity(mesh: measure4, materials: [measure4Material])
+        
+        
+        
+        let measure4Anchor0Mark = AnchorEntity(world: SIMD3(x: 0, y: -1.37, z: 0.1))
+        let measure4barMark = AnchorEntity(world: SIMD3(x: 0, y: -1.39, z: 0.1))
+        let measure4IdealAnchor = AnchorEntity(world: SIMD3(x: (Request.HumidadeSoloIdeal)/1000, y: -1.37, z: 0.1))
+        let measure4Anchor = AnchorEntity(world: SIMD3(x: 0 + (humidadeSolo)/2000.0, y: -1.38, z: 0.1))
+        measure4Anchor.addChild(measure4Entity)
+        measure4Anchor0Mark.addChild(measure40Entety)
+        measure4barMark.addChild(measurebar4Entety)
+        measure4IdealAnchor.addChild(measure4IdealEntety)
+        arView.scene.addAnchor(measure4Anchor)
+        arView.scene.addAnchor(measure4Anchor0Mark)
+        arView.scene.addAnchor(measure4barMark)
+        arView.scene.addAnchor(measure4IdealAnchor)
+        
+        
+        
+        
+        
+        
         //logo
         var myLogo = SimpleMaterial()
         let fileURL = FileManager.default.temporaryDirectory.appendingPathComponent(UUID().uuidString)
                // Download contents of imageURL as Data.  Use a URLSession if you want to do this asynchronously.
-        let data = try! Data(contentsOf:URL(string:"http://46.101.236.202/img/logo.c231748f.png")!)
+        let data = try! Data(contentsOf:URL(string: url + "/img/logo.c231748f.png")!)
                
                // Write the image Data to the file URL.
                try! data.write(to: fileURL)
@@ -350,12 +406,14 @@ private func qrScanner(){
         arView.scene.addAnchor(imageAnchor)
         
         // placa
-        let board = MeshResource.generatePlane(width: 2.1, depth: 1.5, cornerRadius:0.1)
+        let board = MeshResource.generatePlane(width: 2.1, depth: 2.1, cornerRadius:0.1)
         let simpleMaterial = SimpleMaterial(color: .white,roughness: 0, isMetallic: false)
         
         let boardEntity = ModelEntity(mesh: board, materials: [simpleMaterial])
             
         let boardAnchor = AnchorEntity(world: SIMD3(x: 0, y: -1.4, z: -0.8))
+        
+
         boardAnchor.addChild(boardEntity)
         
       
@@ -433,7 +491,7 @@ private func qrScanner(){
     
     
     @objc private func Post(){
-        print("ww")
+       
         guard let ConUrl = URL(string: url + "/api/openWaterValve") else { return}
         let defaults = UserDefaults.standard
         
@@ -522,6 +580,8 @@ private func qrScanner(){
         let TemperaturaIdeal: Float
         let LuminosidadeIdeal: Float
         let HumidadeIdeal: Float
+        let HumidadeSolo: Float
+        let HumidadeSoloIdeal: Float
     }
     
     struct response:Codable {

@@ -11,30 +11,39 @@ class BoxDetailsViewController: UIViewController {
     var selectedBox:Box = Box.init(Nome: "", Id: "1")
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var NavigationBar: UINavigationItem!
+    @IBOutlet weak var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.isNavigationBarHidden = false
         label.text = selectedBox.Id
         
+       // tableView.delegate = self
+        //tableView.dataSource = self
 
-        // Do any additional setup after loading the view.
     }
+    
     override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
           
           self.navigationController?.navigationBar.isHidden = false
       
     }
+
+}
+extension ViewController: UITableViewDelegate{
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("you tapped me!")
     }
-    */
-
+}
+extension ViewController: UITableViewDataSource{
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath)
+        return cell
+    }
 }

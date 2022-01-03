@@ -7,7 +7,7 @@
 
 import Foundation
 
-    var url:String = "http://46.101.236.202"
+    var url:String = "http://138.68.91.112"
     
 
 

@@ -717,7 +717,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-86-qxP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="20.333333333333332"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="148.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZD-8K-1TK">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.333333333333332"/>
@@ -725,6 +725,20 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="F5f-78-7Wz">
+                                                <rect key="frame" x="0.0" y="20.333333333333329" width="414" height="127.99999999999999"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <prototypes>
+                                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsCell" id="5pX-KQ-OJE">
+                                                        <rect key="frame" x="0.0" y="28" width="414" height="43.666667938232422"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5pX-KQ-OJE" id="UjF-MM-D9i">
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </tableViewCellContentView>
+                                                    </tableViewCell>
+                                                </prototypes>
+                                            </tableView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -733,6 +747,7 @@
                                     <constraint firstItem="IMH-86-qxP" firstAttribute="top" secondItem="AGJ-N8-lGQ" secondAttribute="top" id="IZN-pH-Wbr"/>
                                     <constraint firstItem="IMH-86-qxP" firstAttribute="trailing" secondItem="AGJ-N8-lGQ" secondAttribute="trailing" id="JK0-kr-bVs"/>
                                     <constraint firstItem="IMH-86-qxP" firstAttribute="width" secondItem="exe-V3-uhW" secondAttribute="width" id="Jjp-9T-NVh"/>
+                                    <constraint firstItem="exe-V3-uhW" firstAttribute="bottom" secondItem="IMH-86-qxP" secondAttribute="bottom" constant="576.66666666666663" id="mdo-qd-2Vf"/>
                                     <constraint firstItem="IMH-86-qxP" firstAttribute="bottom" secondItem="AGJ-N8-lGQ" secondAttribute="bottom" id="rNX-PF-85o"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="AGJ-N8-lGQ"/>
@@ -753,6 +768,7 @@
                     <connections>
                         <outlet property="NavigationBar" destination="wWc-SK-4gA" id="Zf6-X9-gbB"/>
                         <outlet property="label" destination="mZD-8K-1TK" id="GXw-ux-NmD"/>
+                        <outlet property="tableView" destination="F5f-78-7Wz" id="AA7-1W-kuC"/>
                     </connections>
                 </viewController>
             </objects>
