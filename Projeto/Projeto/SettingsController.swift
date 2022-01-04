@@ -26,6 +26,9 @@ class SettingsController: UIViewController {
         UserDefaults.standard.removeObject(forKey: "username")
         usernameLable.text = UserDefaults.standard.string(forKey: "username")
         tokenLable.text = UserDefaults.standard.string(forKey: "token")
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "LoginController") as! LoginController
+        self.present(controller, animated: true, completion: nil)
 
 
     }

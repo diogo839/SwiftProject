@@ -24,9 +24,6 @@ class ARViewController: UIViewController , AVCaptureMetadataOutputObjectsDelegat
         WaterButton.isEnabled = false;
         RefreshButton.isEnabled = false;
         qrScanner()
-            
-       
-  
     }
     
    
@@ -49,9 +46,6 @@ private func qrScanner(){
       input = try AVCaptureDeviceInput(device: captureDevice)
         
         session.addInput(input)
-        
-      
-        
         session.addOutput(captureOutput)
        
         captureOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
@@ -70,9 +64,6 @@ private func qrScanner(){
 }
     
    
-    
-    
-    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
        
         if(metadataObjects.count == 0){
@@ -101,9 +92,6 @@ private func qrScanner(){
                 
             }
         }
-        
-        
-        
     }
 
     

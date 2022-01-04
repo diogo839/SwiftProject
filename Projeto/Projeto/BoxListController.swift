@@ -10,6 +10,9 @@ import UIKit
 struct Box: Decodable{
     let Nome:String
     let Id:String
+    let Humidade:Float
+    let HumidadeSolo:Float
+    let Luminosidade:Float
 }
 
 class BoxListController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
@@ -105,11 +108,11 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
               }
 
              do {
-        
-                self.boxes = try JSONDecoder().decode([Box].self, from: data)
-                numberBoxes = boxes.count
                 
-                boxes.insert(Box.init(Nome: "➕ Add New", Id: "0"), at: 0)
+                self.boxes = try JSONDecoder().decode([Box].self, from: data)
+                
+                boxes.insert(Box.init(Nome: "➕ Add New", Id: "0", Humidade:0, HumidadeSolo: 0, Luminosidade:0), at: 0)
+                numberBoxes = boxes.count
                 DispatchQueue.main.async {
                     self.boxList.reloadData()
                 }
