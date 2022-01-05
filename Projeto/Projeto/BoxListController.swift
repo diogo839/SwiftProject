@@ -13,6 +13,11 @@ struct Box: Decodable{
     let Humidade:Float
     let HumidadeSolo:Float
     let Luminosidade:Float
+    let Temperatura:Float
+    let HumidadeIdeal:Float
+    let HumidadeSoloIdeal:Float
+    let LuminosidadeIdeal:Float
+    let TemperaturaIdeal:Float
 }
 
 class BoxListController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
@@ -111,7 +116,7 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
                 
                 self.boxes = try JSONDecoder().decode([Box].self, from: data)
                 
-                boxes.insert(Box.init(Nome: "➕ Add New", Id: "0", Humidade:0, HumidadeSolo: 0, Luminosidade:0), at: 0)
+                boxes.insert(Box.init(Nome: "➕ Add New", Id: "0", Humidade:0, HumidadeSolo: 0, Luminosidade:0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0), at: 0)
                 numberBoxes = boxes.count
                 DispatchQueue.main.async {
                     self.boxList.reloadData()
