@@ -7,16 +7,26 @@
 
 import UIKit
 
+
 class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        switch tableView {
+        case trueValuesTableView:
+            return 4
+        case optimalValuesTableView:
+            return 5
+        case settingsTableView:
+            return 2
+        default:
+            return 4
+        }
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch tableView {
         case trueValuesTableView:
-            print("Entrou 1")
             let cell = trueValuesTableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! DetailsTableViewCell
             
             
@@ -41,7 +51,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
             return cell
             
         case optimalValuesTableView:
-            print("Entrou aqui")
             let cell = optimalValuesTableView.dequeueReusableCell(withIdentifier: "optimalValuesCell", for: indexPath) as! OptimalValuesTableViewCell
             
             
@@ -64,6 +73,23 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
             }
             
             return cell
+            
+        case settingsTableView:
+            let cell = optimalValuesTableView.dequeueReusableCell(withIdentifier: "optimalValuesCell", for: indexPath) as! OptimalValuesTableViewCell
+            
+            
+            if(indexPath.row == 0){
+                cell.mainLabel.text = "Change boxname"
+                cell.valueLabel.text = ""
+            }
+            if(indexPath.row == 1){
+                cell.mainLabel.text = "History"
+                cell.valueLabel.text = ""
+            }
+            
+            
+            
+            return cell
         default:
             let cell = optimalValuesTableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! DetailsTableViewCell
         
@@ -71,23 +97,10 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
             return cell
         }
     }
-    
-    func optimalValuesTableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch tableView {
-        case trueValuesTableView:
-            return 4
-        case optimalValuesTableView:
-            return 4
-        default:
-            return 4
-        }
-        
-        
-        
-    }
+  
     
     
-    func optimalValuesTableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("you tapped me!")
     }
     
@@ -96,7 +109,12 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var NavigationBar: UINavigationItem!
     @IBOutlet weak var trueValuesTableView: UITableView!
     @IBOutlet weak var optimalValuesTableView: UITableView!
+    @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var ListButton: UIBarButtonItem!
+    @IBOutlet var mainView: UIView!
+    
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         print(selectedBox)
@@ -106,8 +124,14 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         trueValuesTableView.dataSource = self
         optimalValuesTableView.delegate = self
         optimalValuesTableView.dataSource = self
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.backBarButtonItem = ListButton
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+           refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+           mainScrollView.addSubview(refreshControl) // not required when using UITableViewController
     }
     
     
@@ -115,6 +139,52 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
           super.viewWillAppear(animated)
           self.navigationController?.navigationBar.isHidden = false
 
+    }
+    
+    @objc func refresh(_ sender: AnyObject) {
+       // Code to refresh table view
+        print("Refresh")
+        Post()
+    }
+    
+    func atualizarDados(){
+        
+    }
+    private func Post(){
+        guard let ConUrl = URL(string: url + "/api/GetBox/details/" + selectedBox.Id) else { return}
+        
+        
+        var request=URLRequest(url: ConUrl )
+        request.httpMethod = "GET"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let token = UserDefaults.standard.string(forKey: "token")
+        request.setValue("Bearer "+token!, forHTTPHeaderField: "Authorization")
+    
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest, completionHandler: { [self] data, response, error in
+
+              guard error == nil else {
+                  return
+              }
+
+              guard let data = data else {
+                  return
+              }
+
+             do {
+                self.selectedBox = try JSONDecoder().decode(Box.self, from: data)
+                
+                DispatchQueue.main.async {
+                    self.trueValuesTableView.reloadData()
+                }
+             } catch let error {
+               print(error.localizedDescription)
+             }
+          })
+
+          task.resume()
+        
     }
 
 }
