@@ -800,7 +800,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bEn-CZ-TwL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1775" y="2288"/>
+            <point key="canvasLocation" x="1774" y="2288"/>
         </scene>
         <!--Box Details View Controller-->
         <scene sceneID="rQ2-eq-ZAm">
@@ -1050,7 +1050,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="wWc-SK-4gA">
                         <barButtonItem key="backBarButtonItem" title="List" id="Tq1-20-xat"/>
-                        <barButtonItem key="rightBarButtonItem" title="Water" id="LPo-El-cjk"/>
+                        <barButtonItem key="rightBarButtonItem" title="Water" id="LPo-El-cjk">
+                            <connections>
+                                <action selector="waterButton:" destination="BM6-OB-9hl" id="7KZ-QL-GAG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <connections>
@@ -1066,7 +1070,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMA-7I-Ohb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904" y="2288"/>
+            <point key="canvasLocation" x="2529" y="2288"/>
         </scene>
         <!--Change-->
         <scene sceneID="b8A-ke-Xm9">
@@ -1157,6 +1161,9 @@
                                                 <state key="normal" title="Save changes">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="changeValues:" destination="9j0-Rg-Qcy" eventType="touchUpInside" id="lHH-sW-u4Y"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -1196,7 +1203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncq-3O-nB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3592.753623188406" y="2287.5"/>
+            <point key="canvasLocation" x="3299" y="2288"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SgE-zB-K8k">

@@ -99,6 +99,76 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
   
     
+    @IBAction func waterButton(_ sender: Any) {
+        guard let ConUrl = URL(string: url + "/api/openWaterValve") else { return}
+        
+        var request=URLRequest(url: ConUrl )
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let token = UserDefaults.standard.string(forKey: "token")
+        request.setValue("Bearer "+token!, forHTTPHeaderField: "Authorization")
+        
+        let body: [String: AnyHashable]=[
+            "id":selectedBox.Id
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        let task = URLSession.shared.dataTask(with: request) { data,_,error in guard let data = data , error == nil else {
+                return
+            }
+        
+            do{
+                let responsePostRequest = try JSONDecoder().decode(responseWater.self, from: data)
+                //print(responsePostRequest)
+                print(responsePostRequest.status)
+                if responsePostRequest.status == "success"{
+                   
+                    DispatchQueue.main.async {
+                        
+                        if(self.selectedBox.Rega == true){
+                            self.selectedBox.Rega = false
+                            let refreshAlert = UIAlertController(title: "Water Closed", message: "Water flow closed successfully.", preferredStyle: UIAlertController.Style.alert)
+                            
+                            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
+
+                                        self.dismiss(animated: true, completion: nil)
+                                                  }))
+
+                            self.present(refreshAlert, animated: true, completion: nil)
+                        }else{
+                            self.selectedBox.Rega = true
+                            let refreshAlert = UIAlertController(title: "Water Opened", message: "Water flow opened successfully.", preferredStyle: UIAlertController.Style.alert)
+                            
+                            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
+
+                                        self.dismiss(animated: true, completion: nil)
+                                                  }))
+
+                            self.present(refreshAlert, animated: true, completion: nil)
+                        }
+                        
+                        self.changeWaterButtonLabel()
+                        
+
+                        
+                    }
+                    
+                }else{
+                    
+                    DispatchQueue.main.async {
+                        //self.errorLabel.text=responsePostRequest.status
+                        //self.errorLabel.isHidden = false
+                    }
+                }
+            }catch{
+                print(error)
+            }
+        }
+        task.resume()
+    }
+   
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -146,7 +216,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
        
     }
     
-    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0)
+    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0))
     
     var selectedRowValue = ""
     var selectedRowLabel = ""
@@ -164,8 +234,8 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
-        print(selectedBox)
         super.viewDidLoad()
+        changeWaterButtonLabel()
         BoxnameLable.text = selectedBox.Nome        
         trueValuesTableView.delegate = self
         trueValuesTableView.dataSource = self
@@ -189,16 +259,12 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func refresh(_ sender: AnyObject) {
-       // Code to refresh table view
-        print("Refresh")
-        Post()
+        GetBoxData()
+        refreshControl.endRefreshing()
     }
     
-    func atualizarDados(){
-        
-    }
-    private func Post(){
-        guard let ConUrl = URL(string: url + "/api/GetBox/details/" + selectedBox.Id) else { return}
+    private func GetBoxData(){
+        guard let ConUrl = URL(string: url + "/api/GetBox/box/singleId/" + selectedBox.Id) else { return}
         
         
         var request=URLRequest(url: ConUrl )
@@ -220,6 +286,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
               }
 
              do {
+            
                 self.selectedBox = try JSONDecoder().decode(Box.self, from: data)
                 
                 DispatchQueue.main.async {
@@ -232,6 +299,24 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
 
           task.resume()
         
+    }
+    
+    func changeWaterButtonLabel() {
+        if(selectedBox.Rega == true){
+            navigationItem.rightBarButtonItem?.title = "Close Water"
+        }else{
+            navigationItem.rightBarButtonItem?.title = "Open Water"
+        }
+        
+    }
+    struct responseCreateUser:Codable {
+        let status:String
+        let list:String??;
+        let message:String??;
+    }
+    struct responseWater:Codable {
+        let status:String
+        let rega:Bool
     }
 
 }
