@@ -22,6 +22,21 @@ class HomepageController: UIViewController, UICollectionViewDelegate, UICollecti
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            performSegue(withIdentifier: "ARSegue", sender: self)
+        }
+        if indexPath.row == 1 {
+            let refreshAlert = UIAlertController(title: "Coming Soon", message: "This functionality is coming soon.", preferredStyle: UIAlertController.Style.alert)
+
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+                                                    collectionView.deselectItem(at: indexPath, animated: false)              }))
+
+            present(refreshAlert, animated: true, completion: nil)
+        }
+        
+    }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         
@@ -69,6 +84,22 @@ class HomepageController: UIViewController, UICollectionViewDelegate, UICollecti
         headerCollectionView.dataSource = self;
         
     }
+    
+    func redirectToHomepage() {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let controller = story.instantiateViewController(identifier: "ARViewController") as! UIViewController
+        self.present(controller, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "ARSegue"){
+            let barViewControllers = segue.destination as! UITabBarController
+            let destinationViewController = barViewControllers.viewControllers![2] as! ARViewController
+            
+        }
+       
+    }
 }
+
 
 

@@ -15,7 +15,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         case trueValuesTableView:
             return 4
         case optimalValuesTableView:
-            return 5
+            return 4
         case settingsTableView:
             return 2
         default:
@@ -101,10 +101,57 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("you tapped me!")
+        
+        switch tableView {
+        case optimalValuesTableView:
+            if indexPath.row == 0 {
+                selectedRow = "H"
+                selectedRowLabel = "Optimal Air Humidity"
+                selectedRowValue = String(selectedBox.HumidadeIdeal)
+                performSegue(withIdentifier: "editValuesSegue", sender: self)
+            }
+            if indexPath.row == 1 {
+                selectedRow = "S"
+                selectedRowLabel = "Optimal Soil Moisture"
+                selectedRowValue = String(selectedBox.HumidadeSoloIdeal)
+                performSegue(withIdentifier: "editValuesSegue", sender: self)
+            }
+            if indexPath.row == 2 {
+                selectedRow = "T"
+                selectedRowLabel = "Optimal Temperature"
+                selectedRowValue = String(selectedBox.TemperaturaIdeal)
+                performSegue(withIdentifier: "editValuesSegue", sender: self)
+            }
+            if indexPath.row == 3 {
+                selectedRow = "L"
+                selectedRowLabel = "Optimal Luminosity"
+                selectedRowValue = String(selectedBox.LuminosidadeIdeal)
+                performSegue(withIdentifier: "editValuesSegue", sender: self)
+                
+            }
+            tableView.deselectRow(at: indexPath, animated: false) 
+        default:
+            print("you tapped me!")
+
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let changeValuesVC = segue.destination as? ChangeValuesViewController else {return}
+        if(selectedRow == "H"){
+            changeValuesVC.isNumeric = true
+        }
+        changeValuesVC.topLabelText = "Changing " + selectedRowLabel
+        changeValuesVC.textfieldText = selectedRowValue
+        
+       
     }
     
     var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0)
+    
+    var selectedRowValue = ""
+    var selectedRowLabel = ""
+    var selectedRow = ""
+    
     @IBOutlet weak var BoxnameLable: UILabel!
     @IBOutlet weak var NavigationBar: UINavigationItem!
     @IBOutlet weak var trueValuesTableView: UITableView!

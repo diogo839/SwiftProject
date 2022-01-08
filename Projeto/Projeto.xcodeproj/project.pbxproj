@@ -10,6 +10,7 @@
 		1B08D5142761807400007527 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B08D5132761807400007527 /* CollectionViewController.swift */; };
 		1B66984F2785E5AE004CE87B /* OptimalValuesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B66984E2785E5AE004CE87B /* OptimalValuesTableViewCell.swift */; };
 		1B684BF127849B14003DED70 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */; };
+		1B6E0CE0278741B00010BA4A /* ChangeValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */; };
 		1B6FD45D27674E5A00992570 /* AddNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */; };
 		1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B752837275E62BF003EF17C /* ButtonCell.swift */; };
 		1B79556827625AF900914A88 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79556727625AF900914A88 /* BoxListCell.swift */; };
@@ -57,6 +58,7 @@
 		1B08D5132761807400007527 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
 		1B66984E2785E5AE004CE87B /* OptimalValuesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptimalValuesTableViewCell.swift; sourceTree = "<group>"; };
 		1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeValuesViewController.swift; sourceTree = "<group>"; };
 		1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoxViewController.swift; sourceTree = "<group>"; };
 		1B752837275E62BF003EF17C /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		1B79556727625AF900914A88 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				1BF81B2227679A2F00149545 /* BoxDetailsViewController.swift */,
 				1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */,
 				1B66984E2785E5AE004CE87B /* OptimalValuesTableViewCell.swift */,
+				1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */,
 			);
 			path = BoxList;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				B12E827327591C710066312B /* ARViewController.swift in Sources */,
 				1B08D5142761807400007527 /* CollectionViewController.swift in Sources */,
 				1B684BF127849B14003DED70 /* DetailsTableViewCell.swift in Sources */,
+				1B6E0CE0278741B00010BA4A /* ChangeValuesViewController.swift in Sources */,
 				7F4AA5C6274AA006007118B0 /* cameraViewController.swift in Sources */,
 				7F7ED7EE274300EF00B6AEC6 /* SceneDelegate.swift in Sources */,
 				B12E826E27591C630066312B /* SettingsController.swift in Sources */,

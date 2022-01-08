@@ -23,7 +23,14 @@ class ARViewController: UIViewController , AVCaptureMetadataOutputObjectsDelegat
         
         WaterButton.isEnabled = false;
         RefreshButton.isEnabled = false;
+        self.navigationController?.navigationBar.isHidden = false
+
         qrScanner()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+          super.viewWillAppear(animated)
+          self.navigationController?.navigationBar.isHidden = false
+
     }
     
    

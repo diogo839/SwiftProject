@@ -90,7 +90,7 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
     var numberBoxes = 0
         
 
-    private func Post(){
+    @objc private func Post(){
         guard let ConUrl = URL(string: url + "/api/GetBox/box/all") else { return}
         
         
@@ -118,7 +118,10 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
                 
                 boxes.insert(Box.init(Nome: "➕ Add New", Id: "0", Humidade:0, HumidadeSolo: 0, Luminosidade:0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0), at: 0)
                 numberBoxes = boxes.count
+                
                 DispatchQueue.main.async {
+                    loading.isHidden = true
+                    loading.stopAnimating()
                     self.boxList.reloadData()
                 }
              } catch let error {
@@ -133,15 +136,37 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
 
     @IBOutlet weak var boxList: UICollectionView!
     @IBOutlet weak var navigationBar: UINavigationItem!
+    @IBOutlet weak var loading: UIActivityIndicatorView!
+    @IBOutlet weak var mainScrollView: UIScrollView!
+    let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loading.isHidden = false
+        loading.startAnimating()
         Post()
         self.navigationController?.isNavigationBarHidden = true
         boxList.delegate = self;
         boxList.dataSource = self;
+        
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+           refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+           mainScrollView.addSubview(refreshControl) // not required when using UITableViewController
+
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue:  "PeformAfterPresenting"), object: nil)
 
     }
+    
+    @objc func refresh(_ sender: AnyObject) {
+       // Code to refresh table view
+        loading.isHidden = false
+        loading.startAnimating()
+        Post()
+        refreshControl.endRefreshing()
+
+        
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
           super.viewWillAppear(animated)
           
