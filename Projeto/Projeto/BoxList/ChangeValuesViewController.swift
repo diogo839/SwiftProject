@@ -13,20 +13,20 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var textfield: UITextField!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var verticalStack: UIStackView!
-    @IBOutlet weak var navigationBar: UINavigationBar!
-    @IBOutlet weak var navigationBarTitle: UINavigationItem!
-    @IBOutlet weak var inputview: UIView!
     @IBOutlet weak var saveButton: UIButton!
     
     var topLabelText = ""
     var textfieldText = ""
     var isNumeric = false
     var value = ""
-    var id = ""
+    var idBox = ""
+    var valueLabel = ""
+    var infoText = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topLabel.text = topLabelText
+        infoLabel.text = infoText
         textfield.text = textfieldText
         textfield.delegate = self
         textfield.layer.borderWidth = 0
@@ -46,18 +46,49 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
             let aSet = NSCharacterSet(charactersIn:"0123456789").inverted
             let compSepByCharInSet = string.components(separatedBy: aSet)
             let numberFiltered = compSepByCharInSet.joined(separator: "")
-            return string == numberFiltered
+            if string == numberFiltered {
+                let newText = NSString(string: textField.text!).replacingCharacters(in: range, with: string)
+              if newText.isEmpty {
+                return true
+              }
+              else{
+                if valueLabel == "Humidade" {
+                    if let intValue = Int(newText), intValue <= 100 {
+                      return true
+                    }
+                    return false
+                }
+                if valueLabel == "Luminosidade" {
+                    if let intValue = Int(newText), intValue <= 1000 {
+                      return true
+                    }
+                    return false
+                }
+                if valueLabel == "HumidadeSolo" {
+                    if let intValue = Int(newText), intValue <= 100 {
+                      return true
+                    }
+                    return false
+                }
+                if valueLabel == "Temperatura" {
+                    if let intValue = Int(newText), intValue <= 50 {
+                      return true
+                    }
+                    return false
+                }
+              }
+                
+            }else{
+                return false
+            }
+            
         }
         return true
     }
     
     // Functions needed to hide the keyboard when pressing "return" or
     // Touching anywhere in the screen
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool // called when   'return' key pressed. return NO to ignore.
-    {
-          textField.resignFirstResponder()
-          return true;
-    }
+   
 
     override func touchesBegan(_: Set<UITouch>, with: UIEvent?) {
          textfield.resignFirstResponder()
@@ -66,9 +97,11 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
     //
     
     @IBAction func changeValues(_ sender: Any) {
+        Post(Value: textfield.text!, BoxId: idBox, Type: valueLabel)
     }
-    private func Post(BoxId:String){
-        guard let ConUrl = URL(string: url + "/api/openWaterValve") else { return}
+    
+    private func Post(Value:String,BoxId:String,Type:String){
+        guard let ConUrl = URL(string: url + "/api/alterIdeals") else { return}
         
         var request=URLRequest(url: ConUrl )
         request.httpMethod = "POST"
@@ -78,13 +111,14 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
         
         let body: [String: AnyHashable]=[
             "id":BoxId,
+            "type":Type,
+            "value":Value
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         let task = URLSession.shared.dataTask(with: request) { data,_,error in guard let data = data , error == nil else {
                 return
             }
-        
             do{
                 let responsePostRequest = try JSONDecoder().decode(responseCreateUser.self, from: data)
                 NSLog(responsePostRequest.status)
@@ -92,17 +126,16 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
                 if responsePostRequest.status == "success"{
                    
                     DispatchQueue.main.async {
-                        let refreshAlert = UIAlertController(title: "Success", message: "Box added successfully.", preferredStyle: UIAlertController.Style.alert)
+                        let refreshAlert = UIAlertController(title: "Success", message: "Value updated successfully.", preferredStyle: UIAlertController.Style.alert)
 
                         refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
+                            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "RefreshBoxDetails"), object: nil)
 
                                     self.dismiss(animated: true, completion: nil)
                                               }))
 
                         self.present(refreshAlert, animated: true, completion: nil)
                     }
-                    
                 }else{
                     
                     DispatchQueue.main.async {
@@ -121,5 +154,4 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
     struct responseCreateUser:Codable {
         let status:String
     }
-
 }

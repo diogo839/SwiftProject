@@ -77,7 +77,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         case settingsTableView:
             let cell = optimalValuesTableView.dequeueReusableCell(withIdentifier: "optimalValuesCell", for: indexPath) as! OptimalValuesTableViewCell
             
-            
             if(indexPath.row == 0){
                 cell.mainLabel.text = "Change boxname"
                 cell.valueLabel.text = ""
@@ -86,21 +85,17 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.mainLabel.text = "History"
                 cell.valueLabel.text = ""
             }
-            
-            
-            
+
             return cell
         default:
             let cell = optimalValuesTableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! DetailsTableViewCell
-        
-            
             return cell
         }
     }
   
     
     @IBAction func waterButton(_ sender: Any) {
-        guard let ConUrl = URL(string: url + "/api/openWaterValve") else { return}
+        guard let ConUrl = URL(string: url + "/api/changeWaterValve") else { return}
         
         var request=URLRequest(url: ConUrl )
         request.httpMethod = "POST"
@@ -119,7 +114,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         
             do{
                 let responsePostRequest = try JSONDecoder().decode(responseWater.self, from: data)
-                //print(responsePostRequest)
+                
                 print(responsePostRequest.status)
                 if responsePostRequest.status == "success"{
                    
@@ -148,11 +143,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
 
                             self.present(refreshAlert, animated: true, completion: nil)
                         }
-                        
                         self.changeWaterButtonLabel()
-                        
-
-                        
                     }
                     
                 }else{
@@ -178,28 +169,49 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 selectedRow = "H"
                 selectedRowLabel = "Optimal Air Humidity"
                 selectedRowValue = String(selectedBox.HumidadeIdeal)
+                type = "Humidade"
+                infoText = "This action changes the optimal value for air humidity. Changing this value will affect the operation of the box. There must be chosen a value between 0 and 100."
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
             }
             if indexPath.row == 1 {
                 selectedRow = "S"
                 selectedRowLabel = "Optimal Soil Moisture"
                 selectedRowValue = String(selectedBox.HumidadeSoloIdeal)
+                type = "HumidadeSolo"
+                infoText = "This action changes the optimal value for soil moisture. Changing this value will affect the operation of the box. There must be chosen a value between 0 and 100."
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
             }
             if indexPath.row == 2 {
                 selectedRow = "T"
                 selectedRowLabel = "Optimal Temperature"
                 selectedRowValue = String(selectedBox.TemperaturaIdeal)
+                type = "Temperatura"
+                infoText = "This action changes the optimal value for temperature. Changing this value will affect the operation of the box. There must be chosen a value between 0 and 50."
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
             }
             if indexPath.row == 3 {
                 selectedRow = "L"
                 selectedRowLabel = "Optimal Luminosity"
                 selectedRowValue = String(selectedBox.LuminosidadeIdeal)
+                type = "Luminosidade"
+                infoText = "This action changes the optimal value for luminosity. Changing this value will affect the operation of the box. There must be chosen a value between 0 and 1000."
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
-                
             }
-            tableView.deselectRow(at: indexPath, animated: false) 
+            id = selectedBox.Id
+            print(id)
+            tableView.deselectRow(at: indexPath, animated: false)
+            break
+        case settingsTableView:
+            if indexPath.row == 0 {
+                selectedRow = "N"
+                selectedRowLabel = "Boxname"
+                selectedRowValue = String(selectedBox.Nome)
+                type = "Nome"
+                infoText = "This action changes the name given to your SmartBox. Changing the name of the box will not affect any other functionality. Select a name of your preference to easily distinguish your boxes."
+                performSegue(withIdentifier: "editValuesSegue", sender: self)
+            }
+            break
+            
         default:
             print("you tapped me!")
 
@@ -207,11 +219,17 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let changeValuesVC = segue.destination as? ChangeValuesViewController else {return}
-        if(selectedRow == "H"){
+        if(selectedRow == "N"){
+            changeValuesVC.isNumeric = false
+        }else{
             changeValuesVC.isNumeric = true
+
         }
         changeValuesVC.topLabelText = "Changing " + selectedRowLabel
         changeValuesVC.textfieldText = selectedRowValue
+        changeValuesVC.valueLabel = type
+        changeValuesVC.idBox = selectedBox.Id
+        changeValuesVC.infoText = infoText
         
        
     }
@@ -221,6 +239,9 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     var selectedRowValue = ""
     var selectedRowLabel = ""
     var selectedRow = ""
+    var type = ""
+    var id = ""
+    var infoText = ""
     
     @IBOutlet weak var BoxnameLable: UILabel!
     @IBOutlet weak var NavigationBar: UINavigationItem!
@@ -249,6 +270,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
            refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
            mainScrollView.addSubview(refreshControl) // not required when using UITableViewController
+        NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue:  "RefreshBoxDetails"), object: nil)
     }
     
     
@@ -260,6 +282,8 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func refresh(_ sender: AnyObject) {
         GetBoxData()
+        NavigationBar.title = selectedBox.Nome
+        BoxnameLable.text = selectedBox.Nome
         refreshControl.endRefreshing()
     }
     
@@ -291,6 +315,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 
                 DispatchQueue.main.async {
                     self.trueValuesTableView.reloadData()
+                    self.optimalValuesTableView.reloadData()
                 }
              } catch let error {
                print(error.localizedDescription)
