@@ -203,7 +203,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SMBXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDq-HT-2h2">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SBGXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDq-HT-2h2">
                                                         <rect key="frame" x="0.0" y="308" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="otg-8c-1hN"/>
@@ -709,7 +709,7 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SMBXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-Be-4BX">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SBGXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ddP-Be-4BX">
                                                 <rect key="frame" x="30" y="190" width="354" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="bqA-0K-Om9"/>
@@ -1045,6 +1045,7 @@
                         <outlet property="settingsTableView" destination="CFJ-xa-sAH" id="jAz-fX-jRi"/>
                         <outlet property="trueValuesTableView" destination="F5f-78-7Wz" id="AA7-1W-kuC"/>
                         <segue destination="9j0-Rg-Qcy" kind="presentation" identifier="editValuesSegue" id="PDr-Lk-8NV"/>
+                        <segue destination="mj1-NZ-5cv" kind="show" identifier="historySegue" id="W2k-IQ-yN9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DMA-7I-Ohb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1100,7 +1101,6 @@
                                                                 <rect key="frame" x="80" y="7.9999999999999858" width="244" height="34"/>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <accessibility key="accessibilityConfiguration" label="Value"/>
-                                                                <nil key="textColor"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                                 <textInputTraits key="textInputTraits"/>
                                                             </textField>
@@ -1184,6 +1184,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ncq-3O-nB1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3299" y="2288"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="GAZ-9n-Wvz">
+            <objects>
+                <viewController id="mj1-NZ-5cv" customClass="HistoryViewController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="opF-qL-IOY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="n5E-0I-AxB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="And-Jy-srx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uv4-Hk-XGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3990" y="2288"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="SgE-zB-K8k">
@@ -1316,7 +1332,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp7-WJ-s0V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4113.04347826087" y="1483.9285714285713"/>
+            <point key="canvasLocation" x="4099" y="1465"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

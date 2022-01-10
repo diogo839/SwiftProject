@@ -12,6 +12,7 @@
 		1B684BF127849B14003DED70 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */; };
 		1B6E0CE0278741B00010BA4A /* ChangeValuesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */; };
 		1B6FD45D27674E5A00992570 /* AddNewBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */; };
+		1B70FDCE278CA2D300996370 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B70FDCD278CA2D300996370 /* HistoryViewController.swift */; };
 		1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B752837275E62BF003EF17C /* ButtonCell.swift */; };
 		1B79556827625AF900914A88 /* BoxListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B79556727625AF900914A88 /* BoxListCell.swift */; };
 		1B979A44275988B5002FAE0B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B979A43275988B5002FAE0B /* MainTabBarController.swift */; };
@@ -60,6 +61,7 @@
 		1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeValuesViewController.swift; sourceTree = "<group>"; };
 		1B6FD45C27674E5A00992570 /* AddNewBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewBoxViewController.swift; sourceTree = "<group>"; };
+		1B70FDCD278CA2D300996370 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		1B752837275E62BF003EF17C /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		1B79556727625AF900914A88 /* BoxListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxListCell.swift; sourceTree = "<group>"; };
 		1B979A43275988B5002FAE0B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
@@ -125,13 +127,6 @@
 			path = Homepage;
 			sourceTree = "<group>";
 		};
-		1B75283F275E74CA003EF17C /* images */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
 		1B79556627625ADA00914A88 /* BoxList */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +137,7 @@
 				1B684BF027849B14003DED70 /* DetailsTableViewCell.swift */,
 				1B66984E2785E5AE004CE87B /* OptimalValuesTableViewCell.swift */,
 				1B6E0CDF278741B00010BA4A /* ChangeValuesViewController.swift */,
+				1B70FDCD278CA2D300996370 /* HistoryViewController.swift */,
 			);
 			path = BoxList;
 			sourceTree = "<group>";
@@ -180,7 +176,6 @@
 			isa = PBXGroup;
 			children = (
 				1B79556627625ADA00914A88 /* BoxList */,
-				1B75283F275E74CA003EF17C /* images */,
 				1B752833275E628B003EF17C /* Homepage */,
 				7F4AA5C5274AA006007118B0 /* cameraViewController.swift */,
 				7F4AA5C7274AA043007118B0 /* LoginController.swift */,
@@ -366,6 +361,7 @@
 				1B79556827625AF900914A88 /* BoxListCell.swift in Sources */,
 				1BE83A552763AB76003D4EEA /* BoxListCollectionViewController.swift in Sources */,
 				1B752838275E62BF003EF17C /* ButtonCell.swift in Sources */,
+				1B70FDCE278CA2D300996370 /* HistoryViewController.swift in Sources */,
 				7F225CC5274CFCD8002D817E /* RegisterViewController.swift in Sources */,
 				7F4AA5C1274A9D47007118B0 /* UserClass.swift in Sources */,
 				1B66984F2785E5AE004CE87B /* OptimalValuesTableViewCell.swift in Sources */,
@@ -570,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = C9J22PLCR7;
+				DEVELOPMENT_TEAM = MV6278948U;
 				INFOPLIST_FILE = Projeto/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (

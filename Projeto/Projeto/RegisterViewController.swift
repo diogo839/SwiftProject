@@ -105,7 +105,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 }else{
                     
                     DispatchQueue.main.async {
-                        self.erroMessage.text=responsePostRequest.message as! String
+                        self.erroMessage.text=responsePostRequest.message!
                     }
                 }
             }catch{

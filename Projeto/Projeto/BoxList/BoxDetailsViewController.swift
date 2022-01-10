@@ -198,7 +198,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
             }
             id = selectedBox.Id
-            print(id)
+            
             tableView.deselectRow(at: indexPath, animated: false)
             break
         case settingsTableView:
@@ -210,6 +210,10 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 infoText = "This action changes the name given to your SmartBox. Changing the name of the box will not affect any other functionality. Select a name of your preference to easily distinguish your boxes."
                 performSegue(withIdentifier: "editValuesSegue", sender: self)
             }
+            if indexPath.row == 1 {
+                performSegue(withIdentifier: "historySegue", sender: self)
+            }
+            tableView.deselectRow(at: indexPath, animated: false)
             break
             
         default:
@@ -218,18 +222,27 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let changeValuesVC = segue.destination as? ChangeValuesViewController else {return}
-        if(selectedRow == "N"){
-            changeValuesVC.isNumeric = false
-        }else{
-            changeValuesVC.isNumeric = true
+        
+        if segue.identifier == "editValuesSegue" {
+            guard let changeValuesVC = segue.destination as? ChangeValuesViewController else {return}
+            if(selectedRow == "N"){
+                changeValuesVC.isNumeric = false
+            }else{
+                changeValuesVC.isNumeric = true
 
+            }
+            changeValuesVC.topLabelText = "Changing " + selectedRowLabel
+            changeValuesVC.textfieldText = selectedRowValue
+            changeValuesVC.valueLabel = type
+            changeValuesVC.idBox = selectedBox.Id
+            changeValuesVC.infoText = infoText
         }
-        changeValuesVC.topLabelText = "Changing " + selectedRowLabel
-        changeValuesVC.textfieldText = selectedRowValue
-        changeValuesVC.valueLabel = type
-        changeValuesVC.idBox = selectedBox.Id
-        changeValuesVC.infoText = infoText
+        if segue.identifier == "historySegue" {
+            guard let changeValuesVC = segue.destination as? HistoryViewController else {return}
+            changeValuesVC.selectedBox = selectedBox
+        }
+        
+        
         
        
     }
@@ -284,6 +297,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         GetBoxData()
         NavigationBar.title = selectedBox.Nome
         BoxnameLable.text = selectedBox.Nome
+        changeWaterButtonLabel() 		
         refreshControl.endRefreshing()
     }
     
