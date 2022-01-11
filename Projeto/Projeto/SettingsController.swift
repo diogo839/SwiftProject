@@ -41,6 +41,15 @@ class SettingsController: UIViewController, UITableViewDelegate, UITableViewData
             present(refreshAlert, animated: true, completion: nil)
             
         }
+        if(indexPath.row == 1){
+            let refreshAlert = UIAlertController(title: "Coming Soon", message: "This functionality is coming soon.", preferredStyle: UIAlertController.Style.alert)
+
+            refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+                                                    tableView.deselectRow(at: indexPath, animated: false)              }))
+
+            present(refreshAlert, animated: true, completion: nil)
+            
+        }
         if(indexPath.row == 2){
             let refreshAlert = UIAlertController(title: "Logout", message: "Your session will be closed.", preferredStyle: UIAlertController.Style.alert)
 
