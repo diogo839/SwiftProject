@@ -90,12 +90,20 @@ class HomepageController: UIViewController, UICollectionViewDelegate, UICollecti
         let controller = story.instantiateViewController(identifier: "ARViewController") as! UIViewController
         self.present(controller, animated: true, completion: nil)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = true
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "ARSegue"){
-            let barViewControllers = segue.destination as! UITabBarController
-            let destinationViewController = barViewControllers.viewControllers![2] as! ARViewController
             
+            self.navigationController?.isNavigationBarHidden = false
+
+            guard let boxDetailsVC = segue.destination as? ARViewController else {return}
+            
+            segue.destination.navigationController?.isNavigationBarHidden = false
+
         }
        
     }

@@ -308,7 +308,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         
 
          let convertDateFormatter = DateFormatter()
-         convertDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+         convertDateFormatter.dateFormat = "dd MMM yyyy h:mm a"
 
          return convertDateFormatter.string(from: oldDate!)
     }
