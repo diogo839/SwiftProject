@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Foundation
 
 
 class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -98,7 +99,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         guard let ConUrl = URL(string: url + "/api/changeWaterValve") else { return}
         
         var request=URLRequest(url: ConUrl )
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let token = UserDefaults.standard.string(forKey: "token")
         request.setValue("Bearer "+token!, forHTTPHeaderField: "Authorization")
@@ -247,7 +248,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
        
     }
     
-    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0))
+    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0), updatedAt: "")
     
     var selectedRowValue = ""
     var selectedRowLabel = ""
@@ -263,6 +264,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var ListButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
+    @IBOutlet weak var updatedAtLabel: UILabel!
     
     @IBOutlet weak var mainScrollView: UIScrollView!
     let refreshControl = UIRefreshControl()
@@ -270,7 +272,9 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         changeWaterButtonLabel()
-        BoxnameLable.text = selectedBox.Nome        
+        BoxnameLable.text = selectedBox.Nome
+        updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
+        //updatedAtLabel.text = selectedBox.updatedAt
         trueValuesTableView.delegate = self
         trueValuesTableView.dataSource = self
         optimalValuesTableView.delegate = self
@@ -292,11 +296,28 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
           self.navigationController?.navigationBar.isHidden = false
 
     }
+
+    func convertDateFormat(inputDate: String) -> String {
+        let fullNameArr = inputDate.components(separatedBy: ".")
+        var firstName: String = fullNameArr[0]
+        
+         let olDateFormatter = DateFormatter()
+         olDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+         let oldDate = olDateFormatter.date(from: firstName)
+        
+
+         let convertDateFormatter = DateFormatter()
+         convertDateFormatter.dateFormat = "MMM dd yyyy h:mm a"
+
+         return convertDateFormatter.string(from: oldDate!)
+    }
     
     @objc func refresh(_ sender: AnyObject) {
         GetBoxData()
         NavigationBar.title = selectedBox.Nome
         BoxnameLable.text = selectedBox.Nome
+        updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
         changeWaterButtonLabel() 		
         refreshControl.endRefreshing()
     }

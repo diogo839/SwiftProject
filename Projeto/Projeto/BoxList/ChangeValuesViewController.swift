@@ -104,7 +104,7 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
         guard let ConUrl = URL(string: url + "/api/alterIdeals") else { return}
         
         var request=URLRequest(url: ConUrl )
-        request.httpMethod = "POST"
+        request.httpMethod = "PUT"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let token = UserDefaults.standard.string(forKey: "token")
         request.setValue("Bearer "+token!, forHTTPHeaderField: "Authorization")
