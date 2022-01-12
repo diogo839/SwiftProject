@@ -13,7 +13,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var smartBoxIDField: UITextField!
     @IBOutlet weak var boxNameField: UITextField!
-    @IBOutlet weak var erroMessage: UILabel!
+    @IBOutlet weak var errorMessage: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 
         //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
         //tap.cancelsTouchesInView = false
-
+        errorMessage.isHidden = true
         view.addGestureRecognizer(tap)
     }
     //Disables the "Create" button if username or SmartBoxID not filled
@@ -60,12 +60,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func CreateButton(_ sender: UIButton) {
-        erroMessage.text=""
-        Post(BoxName: boxNameField.text! , Usename: usernameField.text!, BoxId: smartBoxIDField.text ?? "box")
+        errorMessage.text=""
+        Post(BoxName: boxNameField.text! , Username: usernameField.text!, BoxId: smartBoxIDField.text ?? "box")
         
     }
     
-    private func Post(BoxName:String,Usename:String,BoxId:String){
+    private func Post(BoxName:String,Username:String,BoxId:String){
         guard let ConUrl = URL(string: url + "/api/addUser") else { return}
         
         var request=URLRequest(url: ConUrl )
@@ -96,7 +96,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     }
                 }else{
                     DispatchQueue.main.async {
-                        self.erroMessage.text=responsePostRequest.message!
+                        self.errorMessage.isHidden = false
+                        self.errorMessage.text=responsePostRequest.message!
                     }
                 }
             }catch{
