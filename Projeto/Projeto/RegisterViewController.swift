@@ -65,10 +65,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    
-    
-    
-    
     private func Post(BoxName:String,Usename:String,BoxId:String){
         guard let ConUrl = URL(string: url + "/api/addUser") else { return}
         
@@ -76,7 +72,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let body: [String: AnyHashable]=[
-            "name":BoxName,
+            "name":Username,
             "id":BoxId,
             "namebox":BoxName
         ]
@@ -88,8 +84,6 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         
             do{
                 let responsePostRequest = try JSONDecoder().decode(responseCreateUser.self, from: data)
-                NSLog(responsePostRequest.status)
-                print(responsePostRequest)
                 if responsePostRequest.status == "sucess"{
                    
                     DispatchQueue.main.async {
@@ -99,11 +93,8 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                         defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
                         defaults.set(BoxName, forKey:"username" )
                         self.redirectToHomepage()
-    
                     }
-                    
                 }else{
-                    
                     DispatchQueue.main.async {
                         self.erroMessage.text=responsePostRequest.message!
                     }
