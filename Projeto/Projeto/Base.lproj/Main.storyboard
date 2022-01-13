@@ -334,7 +334,7 @@
         <scene sceneID="dhI-lf-r64">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="RRy-c1-Ngq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Box List" id="t9x-h8-FHW">
+                    <tabBarItem key="tabBarItem" tag="1" title="Box List" id="t9x-h8-FHW">
                         <imageReference key="image" image="list.bullet" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NT8-qV-48P">
@@ -368,7 +368,7 @@
         <scene sceneID="ChG-63-5sy">
             <objects>
                 <navigationController storyboardIdentifier="SettingsNavigationController" id="zgb-ks-gWi" customClass="SettingsNavigationController" customModule="Projeto" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Settings" id="rbJ-1n-eYe">
+                    <tabBarItem key="tabBarItem" tag="3" title="Settings" id="rbJ-1n-eYe">
                         <imageReference key="image" image="gear" catalog="system" symbolScale="default"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="oXj-G6-cOv">
@@ -387,9 +387,10 @@
         <scene sceneID="8XM-8J-0rF">
             <objects>
                 <navigationController storyboardIdentifier="ARViewController" modalPresentationStyle="fullScreen" id="le0-sj-gJu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="AR" id="Mwk-cP-8ZF">
+                    <tabBarItem key="tabBarItem" tag="2" title="AR" id="Mwk-cP-8ZF">
                         <imageReference key="image" image="camera.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="jh3-hc-8lr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="pe1-1B-AiL">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -537,7 +538,7 @@
                     <connections>
                         <outlet property="headerCollectionView" destination="3Jb-ym-zxN" id="Ant-ms-LBq"/>
                         <outlet property="navigationBar" destination="cW2-Ak-OhH" id="wpY-Y9-WTy"/>
-                        <segue destination="PKb-xJ-2bh" kind="show" identifier="ARSegue" id="JqA-bp-g3T"/>
+                        <segue destination="PKb-xJ-2bh" kind="show" identifier="ARSegue" id="6RU-rA-mn0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FxN-0M-XVh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -989,12 +990,6 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DWx-En-1Ev">
-                                                                    <rect key="frame" x="332.66666666666669" y="11.000000000000002" width="41.333333333333314" height="20.666666666666671"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="o3N-JR-gH4">
                                                                     <rect key="frame" x="374" y="13.333333333333332" width="40" height="16.666666666666664"/>
                                                                     <color key="tintColor" systemColor="secondaryLabelColor"/>
@@ -1007,21 +1002,15 @@
                                                                 <constraint firstItem="b6q-lB-y5V" firstAttribute="top" secondItem="u7C-cY-5KH" secondAttribute="topMargin" id="6nU-xH-GwF"/>
                                                                 <constraint firstItem="b6q-lB-y5V" firstAttribute="centerY" secondItem="o3N-JR-gH4" secondAttribute="centerY" id="7n0-6g-LK8"/>
                                                                 <constraint firstItem="b6q-lB-y5V" firstAttribute="centerY" secondItem="u7C-cY-5KH" secondAttribute="centerY" id="CfV-s4-YTO"/>
-                                                                <constraint firstItem="DWx-En-1Ev" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u7C-cY-5KH" secondAttribute="leading" constant="20" symbolic="YES" id="Grw-Ef-RXt"/>
-                                                                <constraint firstItem="o3N-JR-gH4" firstAttribute="leading" secondItem="DWx-En-1Ev" secondAttribute="trailing" id="KXm-GR-YcV"/>
                                                                 <constraint firstItem="b6q-lB-y5V" firstAttribute="leading" secondItem="u7C-cY-5KH" secondAttribute="leadingMargin" id="YKf-sA-ZTX"/>
                                                                 <constraint firstItem="b6q-lB-y5V" firstAttribute="centerY" secondItem="u7C-cY-5KH" secondAttribute="centerY" id="csH-yq-Us6"/>
-                                                                <constraint firstItem="b6q-lB-y5V" firstAttribute="baseline" secondItem="DWx-En-1Ev" secondAttribute="baseline" id="ekS-Kw-Q28"/>
-                                                                <constraint firstItem="DWx-En-1Ev" firstAttribute="centerY" secondItem="u7C-cY-5KH" secondAttribute="centerY" id="ewV-Lx-5JG"/>
                                                                 <constraint firstAttribute="trailing" secondItem="o3N-JR-gH4" secondAttribute="trailing" id="frI-ld-sKD"/>
                                                                 <constraint firstItem="o3N-JR-gH4" firstAttribute="leading" secondItem="b6q-lB-y5V" secondAttribute="trailing" constant="25.666666666666657" id="i8G-gX-kcd"/>
-                                                                <constraint firstItem="b6q-lB-y5V" firstAttribute="firstBaseline" secondItem="DWx-En-1Ev" secondAttribute="firstBaseline" id="tuo-PG-gzc"/>
                                                             </constraints>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="mainLabel" destination="b6q-lB-y5V" id="Uhc-CZ-FBa"/>
                                                             <outlet property="symbol" destination="o3N-JR-gH4" id="qIl-p1-Lds"/>
-                                                            <outlet property="valueLabel" destination="DWx-En-1Ev" id="DJl-eK-2EY"/>
                                                         </connections>
                                                     </tableViewCell>
                                                 </prototypes>
@@ -1384,7 +1373,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="JqA-bp-g3T"/>
+        <segue reference="6RU-rA-mn0"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="94"/>

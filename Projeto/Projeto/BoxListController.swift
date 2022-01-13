@@ -165,23 +165,16 @@ class BoxListController: UIViewController, UICollectionViewDelegate, UICollectio
         loading.startAnimating()
         Post()
         refreshControl.endRefreshing()
-
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-          super.viewWillAppear(animated)
-          
-          self.navigationController?.navigationBar.isHidden = true
-      
+      super.viewWillAppear(animated)
+      self.navigationController?.navigationBar.isHidden = true
     }
 
     struct response:Codable {
         let status:String
         let list:String??;
         let message:String??;
-        
     }
-    
-
 }

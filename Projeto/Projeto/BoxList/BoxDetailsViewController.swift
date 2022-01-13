@@ -126,9 +126,9 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                             let refreshAlert = UIAlertController(title: "Water Closed", message: "Water flow closed successfully.", preferredStyle: UIAlertController.Style.alert)
                             
                             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
+                                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
 
-                                        self.dismiss(animated: true, completion: nil)
+                                       // self.dismiss(animated: true, completion: nil)
                                                   }))
 
                             self.present(refreshAlert, animated: true, completion: nil)
@@ -137,9 +137,9 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                             let refreshAlert = UIAlertController(title: "Water Opened", message: "Water flow opened successfully.", preferredStyle: UIAlertController.Style.alert)
                             
                             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-                                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
+                                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
 
-                                        self.dismiss(animated: true, completion: nil)
+                                        //self.dismiss(animated: true, completion: nil)
                                                   }))
 
                             self.present(refreshAlert, animated: true, completion: nil)
@@ -150,8 +150,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 }else{
                     
                     DispatchQueue.main.async {
-                        //self.errorLabel.text=responsePostRequest.status
-                        //self.errorLabel.isHidden = false
+                       
                     }
                 }
             }catch{
@@ -242,10 +241,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
             guard let changeValuesVC = segue.destination as? HistoryViewController else {return}
             changeValuesVC.selectedBox = selectedBox
         }
-        
-        
-        
-       
     }
     
     var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0), updatedAt: "")
@@ -274,7 +269,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         changeWaterButtonLabel()
         BoxnameLable.text = selectedBox.Nome
         updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
-        //updatedAtLabel.text = selectedBox.updatedAt
         trueValuesTableView.delegate = self
         trueValuesTableView.dataSource = self
         optimalValuesTableView.delegate = self
@@ -299,17 +293,14 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
 
     func convertDateFormat(inputDate: String) -> String {
         let fullNameArr = inputDate.components(separatedBy: ".")
-        var firstName: String = fullNameArr[0]
+        let firstName: String = fullNameArr[0]
         
          let olDateFormatter = DateFormatter()
          olDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
 
          let oldDate = olDateFormatter.date(from: firstName)
-        
-
          let convertDateFormatter = DateFormatter()
          convertDateFormatter.dateFormat = "dd MMM yyyy h:mm a"
-
          return convertDateFormatter.string(from: oldDate!)
     }
     
@@ -324,8 +315,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     private func GetBoxData(){
         guard let ConUrl = URL(string: url + "/api/GetBox/box/singleId/" + selectedBox.Id) else { return}
-        
-        
+
         var request=URLRequest(url: ConUrl )
         request.httpMethod = "GET"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -345,7 +335,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
               }
 
              do {
-            
                 self.selectedBox = try JSONDecoder().decode(Box.self, from: data)
                 
                 DispatchQueue.main.async {

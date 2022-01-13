@@ -89,7 +89,12 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
     // Functions needed to hide the keyboard when pressing "return" or
     // Touching anywhere in the screen
    
-
+    //Calls this function when the tap is recognized.
+    @objc func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
+    }
+    
     override func touchesBegan(_: Set<UITouch>, with: UIEvent?) {
          textfield.resignFirstResponder()
          self.view.endEditing(true)
