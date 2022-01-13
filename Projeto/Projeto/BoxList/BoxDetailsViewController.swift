@@ -243,7 +243,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0), updatedAt: "")
+    var selectedBox:Box = Box.init(Nome: "", Id: "1", Humidade: 0, HumidadeSolo: 0, Luminosidade: 0, Temperatura: 0, HumidadeIdeal: 0, HumidadeSoloIdeal: 0, LuminosidadeIdeal: 0, TemperaturaIdeal: 0, Rega: (0 != 0), updatedAt: "", manualMode: false)
     
     var selectedRowValue = ""
     var selectedRowLabel = ""
@@ -257,9 +257,12 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var trueValuesTableView: UITableView!
     @IBOutlet weak var optimalValuesTableView: UITableView!
     @IBOutlet weak var settingsTableView: UITableView!
+    @IBOutlet weak var autoWateringSwitch: UISwitch!
     @IBOutlet weak var ListButton: UIBarButtonItem!
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var updatedAtLabel: UILabel!
+    @IBOutlet weak var autoWateringLabel: UILabel!
+    
     
     @IBOutlet weak var mainScrollView: UIScrollView!
     let refreshControl = UIRefreshControl()
@@ -267,6 +270,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         changeWaterButtonLabel()
+        labelSwitch(isOn: selectedBox.manualMode)
         BoxnameLable.text = selectedBox.Nome
         updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
         trueValuesTableView.delegate = self
@@ -277,11 +281,29 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         settingsTableView.dataSource = self
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.backBarButtonItem = ListButton
+
         
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
            refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
            mainScrollView.addSubview(refreshControl) // not required when using UITableViewController
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue:  "RefreshBoxDetails"), object: nil)
+    }
+    
+    @IBAction func WateringSwitch(_ sender: Any) {
+        
+        labelSwitch(isOn: autoWateringSwitch.isOn)
+        ChangeButtonMode( BoxId: selectedBox.Id)
+        
+    }
+    func labelSwitch(isOn: Bool) {
+        if(isOn == true){
+            autoWateringLabel.text = "Auto watering ON"
+            autoWateringSwitch.isOn = true
+        }else{
+            autoWateringLabel.text = "Auto watering OFF"
+            autoWateringSwitch.isOn = false
+
+        }
     }
     
     
@@ -309,8 +331,49 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         NavigationBar.title = selectedBox.Nome
         BoxnameLable.text = selectedBox.Nome
         updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
+        
+
+        labelSwitch(isOn: selectedBox.manualMode)
+        
         changeWaterButtonLabel() 		
         refreshControl.endRefreshing()
+        
+    }
+    private func ChangeButtonMode(BoxId:String){
+        guard let ConUrl = URL(string: url + "/api/changeMode") else { return}
+        
+        var request=URLRequest(url: ConUrl )
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let token = UserDefaults.standard.string(forKey: "token")
+        request.setValue("Bearer "+token!, forHTTPHeaderField: "Authorization")
+        
+        let body: [String: AnyHashable]=[
+            "id":BoxId,
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        let task = URLSession.shared.dataTask(with: request) { data,_,error in guard let data = data , error == nil else {
+                return
+            }
+            do{
+                let responsePostRequest = try JSONDecoder().decode(responseCreateUser.self, from: data)
+                NSLog(responsePostRequest.status)
+                print(responsePostRequest)
+                if responsePostRequest.status == "success"{
+                    DispatchQueue.main.async {
+                        self.GetBoxData()
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        
+                    }
+                }
+            }catch{
+                print(error)
+            }
+        }
+        task.resume()
     }
     
     private func GetBoxData(){
@@ -340,6 +403,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 DispatchQueue.main.async {
                     self.trueValuesTableView.reloadData()
                     self.optimalValuesTableView.reloadData()
+                    labelSwitch(isOn: selectedBox.manualMode)
                 }
              } catch let error {
                print(error.localizedDescription)

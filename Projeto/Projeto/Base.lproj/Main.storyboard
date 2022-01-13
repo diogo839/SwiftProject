@@ -815,7 +815,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-86-qxP">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="615"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="670"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXZ-xg-LF4">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="10"/>
@@ -1015,6 +1015,34 @@
                                                     </tableViewCell>
                                                 </prototypes>
                                             </tableView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VA9-Lg-1Xm">
+                                                <rect key="frame" x="0.0" y="623" width="414" height="47"/>
+                                                <subviews>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" title="Auto Watering" translatesAutoresizingMaskIntoConstraints="NO" id="aX4-KX-ogv">
+                                                        <rect key="frame" x="20" y="8" width="57" height="31"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="55" id="hce-OL-3wN"/>
+                                                        </constraints>
+                                                        <connections>
+                                                            <action selector="WateringSwitch:" destination="BM6-OB-9hl" eventType="valueChanged" id="rKU-rr-b41"/>
+                                                        </connections>
+                                                    </switch>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lTv-E8-11e">
+                                                        <rect key="frame" x="75" y="8" width="10" height="31"/>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="10" id="lTk-9M-htJ"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kdj-qO-lje">
+                                                        <rect key="frame" x="85" y="8" width="309" height="31"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -1049,6 +1077,8 @@
                     <connections>
                         <outlet property="BoxnameLable" destination="mZD-8K-1TK" id="GXw-ux-NmD"/>
                         <outlet property="NavigationBar" destination="wWc-SK-4gA" id="Zf6-X9-gbB"/>
+                        <outlet property="autoWateringLabel" destination="Kdj-qO-lje" id="HFH-T7-XB2"/>
+                        <outlet property="autoWateringSwitch" destination="aX4-KX-ogv" id="piK-6d-MX8"/>
                         <outlet property="mainScrollView" destination="sBc-ie-vhf" id="XB8-Cm-mtf"/>
                         <outlet property="mainView" destination="0dc-0J-Q2S" id="4og-hl-sVu"/>
                         <outlet property="optimalValuesTableView" destination="JhJ-XA-zdd" id="KSg-jr-ueE"/>
@@ -1205,22 +1235,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="y97-gx-lY9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y97-gx-lY9">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c8n-07-u57">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="c8n-07-u57">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="580.33333333333337"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cEb-sk-EtD">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="20"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="20" id="bDa-ZL-68y"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the data for the graph" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfb-n4-Wp0">
+                                                <rect key="frame" x="0.0" y="20" width="414" height="17"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vxa-hc-Q2x">
+                                                <rect key="frame" x="0.0" y="37" width="414" height="60"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="60" id="maQ-Y6-ZdN"/>
+                                                </constraints>
+                                            </pickerView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="udE-0X-vXR">
+                                                <rect key="frame" x="0.0" y="96.999999999999972" width="414" height="483.33333333333326"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="580.33333333333337" id="gfv-q3-Uax"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="c8n-07-u57" firstAttribute="top" secondItem="q00-Qa-iBf" secondAttribute="top" id="4yh-lV-bPQ"/>
-                                    <constraint firstItem="c8n-07-u57" firstAttribute="leading" secondItem="q00-Qa-iBf" secondAttribute="leading" id="I2L-Sa-raw"/>
-                                    <constraint firstItem="c8n-07-u57" firstAttribute="trailing" secondItem="q00-Qa-iBf" secondAttribute="trailing" id="e8b-gt-vZN"/>
-                                    <constraint firstItem="c8n-07-u57" firstAttribute="width" secondItem="thd-DT-QPd" secondAttribute="width" id="gCn-Vr-u8U"/>
-                                    <constraint firstItem="c8n-07-u57" firstAttribute="bottom" secondItem="q00-Qa-iBf" secondAttribute="bottom" id="rxp-PB-Ey2"/>
+                                    <constraint firstItem="c8n-07-u57" firstAttribute="top" secondItem="y97-gx-lY9" secondAttribute="top" id="4yh-lV-bPQ"/>
+                                    <constraint firstItem="c8n-07-u57" firstAttribute="leading" secondItem="y97-gx-lY9" secondAttribute="leading" id="I2L-Sa-raw"/>
+                                    <constraint firstItem="c8n-07-u57" firstAttribute="trailing" secondItem="y97-gx-lY9" secondAttribute="trailing" id="e8b-gt-vZN"/>
+                                    <constraint firstItem="c8n-07-u57" firstAttribute="width" secondItem="y97-gx-lY9" secondAttribute="width" id="gCn-Vr-u8U"/>
+                                    <constraint firstItem="c8n-07-u57" firstAttribute="bottom" secondItem="y97-gx-lY9" secondAttribute="bottom" id="rxp-PB-Ey2"/>
                                 </constraints>
-                                <viewLayoutGuide key="contentLayoutGuide" id="q00-Qa-iBf"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="thd-DT-QPd"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="n5E-0I-AxB"/>
@@ -1233,6 +1289,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="And-Jy-srx"/>
+                    <connections>
+                        <outlet property="dataPicker" destination="Vxa-hc-Q2x" id="7zH-a4-GNk"/>
+                        <outlet property="viewForChart" destination="udE-0X-vXR" id="bIu-UH-ylN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uv4-Hk-XGB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
