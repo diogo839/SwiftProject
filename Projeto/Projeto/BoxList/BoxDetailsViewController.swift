@@ -26,6 +26,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch tableView {
         case trueValuesTableView:
             let cell = trueValuesTableView.dequeueReusableCell(withIdentifier: "detailsCell", for: indexPath) as! DetailsTableViewCell
@@ -48,6 +49,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.mainLabel.text = "Luminosity"
                 cell.valueLabel.text = String(selectedBox.Luminosidade)
             }
+           
             
             return cell
             
@@ -73,6 +75,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.valueLabel.text = String(selectedBox.LuminosidadeIdeal)
             }
             
+            
             return cell
             
         case settingsTableView:
@@ -86,6 +89,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 cell.mainLabel.text = "History"
                 cell.valueLabel.text = ""
             }
+            
 
             return cell
         default:
@@ -95,7 +99,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     }
   
     
-    @IBAction func waterButton(_ sender: Any) {
+    func openWaterValve(_ sender: Any) {
         guard let ConUrl = URL(string: url + "/api/changeWaterValve") else { return}
         
         var request=URLRequest(url: ConUrl )
@@ -126,9 +130,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                             let refreshAlert = UIAlertController(title: "Water Closed", message: "Water flow closed successfully.", preferredStyle: UIAlertController.Style.alert)
                             
                             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-                                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
-
-                                       // self.dismiss(animated: true, completion: nil)
+                                
                                                   }))
 
                             self.present(refreshAlert, animated: true, completion: nil)
@@ -137,14 +139,13 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                             let refreshAlert = UIAlertController(title: "Water Opened", message: "Water flow opened successfully.", preferredStyle: UIAlertController.Style.alert)
                             
                             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
-                                //NotificationCenter.default.post(name: NSNotification.Name(rawValue: "PeformAfterPresenting"), object: nil)
-
-                                        //self.dismiss(animated: true, completion: nil)
+                                
                                                   }))
 
                             self.present(refreshAlert, animated: true, completion: nil)
                         }
-                        self.changeWaterButtonLabel()
+                        self.labelManualSwitch(isOn: self.selectedBox.Rega)
+                        self.refresh(self)
                     }
                     
                 }else{
@@ -160,7 +161,6 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         task.resume()
     }
    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         switch tableView {
@@ -258,19 +258,22 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var optimalValuesTableView: UITableView!
     @IBOutlet weak var settingsTableView: UITableView!
     @IBOutlet weak var autoWateringSwitch: UISwitch!
-    @IBOutlet weak var ListButton: UIBarButtonItem!
-    @IBOutlet var mainView: UIView!
+    @IBOutlet weak var manualWateringSwitch: UISwitch!
     @IBOutlet weak var updatedAtLabel: UILabel!
     @IBOutlet weak var autoWateringLabel: UILabel!
-    
-    
+    @IBOutlet weak var manualWateringLabel: UILabel!
     @IBOutlet weak var mainScrollView: UIScrollView!
+    @IBOutlet weak var viewOptions: UIView!
+    @IBOutlet weak var viewOptimalValues: UIView!
+    @IBOutlet weak var viewTrueValues: UIView!
+    @IBOutlet weak var viewOtherOptions: UIView!
+    
     let refreshControl = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        changeWaterButtonLabel()
-        labelSwitch(isOn: selectedBox.manualMode)
+        labelAutomaticSwitch(isOn: selectedBox.manualMode)
+        labelManualSwitch(isOn: selectedBox.Rega)
         BoxnameLable.text = selectedBox.Nome
         updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
         trueValuesTableView.delegate = self
@@ -280,7 +283,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         settingsTableView.delegate = self
         settingsTableView.dataSource = self
         self.navigationController?.isNavigationBarHidden = false
-        navigationItem.backBarButtonItem = ListButton
+        RoundCorners()
 
         
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
@@ -289,19 +292,47 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         NotificationCenter.default.addObserver(self, selector: #selector(refresh), name: NSNotification.Name(rawValue:  "RefreshBoxDetails"), object: nil)
     }
     
+    func RoundCorners(){
+        viewOptions.layer.cornerRadius = 10
+        viewTrueValues.layer.cornerRadius = 10
+        trueValuesTableView.layer.cornerRadius = 10
+        viewOtherOptions.layer.cornerRadius = 10
+        optimalValuesTableView.layer.cornerRadius = 10
+        viewOptimalValues.layer.cornerRadius = 10
+        settingsTableView.layer.cornerRadius = 10
+        settingsTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.001))
+        optimalValuesTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.001))
+        trueValuesTableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0.001))
+    }
+    
     @IBAction func WateringSwitch(_ sender: Any) {
         
-        labelSwitch(isOn: autoWateringSwitch.isOn)
+        labelAutomaticSwitch(isOn: autoWateringSwitch.isOn)
         ChangeButtonMode( BoxId: selectedBox.Id)
         
     }
-    func labelSwitch(isOn: Bool) {
+    @IBAction func IrrigationSwitch(_ sender: Any) {
+        labelManualSwitch(isOn: manualWateringSwitch.isOn)
+        openWaterValve(self)
+    }
+    
+    func labelAutomaticSwitch(isOn: Bool) {
         if(isOn == true){
             autoWateringLabel.text = "Auto watering ON"
             autoWateringSwitch.isOn = true
         }else{
             autoWateringLabel.text = "Auto watering OFF"
             autoWateringSwitch.isOn = false
+
+        }
+    }
+    func labelManualSwitch(isOn: Bool) {
+        if(isOn == true){
+            manualWateringLabel.text = "Stop box irrigation"
+            manualWateringSwitch.isOn = true
+        }else{
+            manualWateringLabel.text = "Start box irrigation"
+            manualWateringSwitch.isOn = false
 
         }
     }
@@ -333,9 +364,9 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         updatedAtLabel.text = "Last update: " + convertDateFormat(inputDate: selectedBox.updatedAt)
         
 
-        labelSwitch(isOn: selectedBox.manualMode)
+        labelAutomaticSwitch(isOn: selectedBox.manualMode)
         
-        changeWaterButtonLabel() 		
+        		
         refreshControl.endRefreshing()
         
     }
@@ -403,7 +434,8 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
                 DispatchQueue.main.async {
                     self.trueValuesTableView.reloadData()
                     self.optimalValuesTableView.reloadData()
-                    labelSwitch(isOn: selectedBox.manualMode)
+                    labelAutomaticSwitch(isOn: selectedBox.manualMode)
+                    labelManualSwitch(isOn: selectedBox.Rega)
                 }
              } catch let error {
                print(error.localizedDescription)
@@ -414,14 +446,7 @@ class BoxDetailsViewController: UIViewController, UITableViewDelegate, UITableVi
         
     }
     
-    func changeWaterButtonLabel() {
-        if(selectedBox.Rega == true){
-            navigationItem.rightBarButtonItem?.title = "Close Water"
-        }else{
-            navigationItem.rightBarButtonItem?.title = "Open Water"
-        }
-        
-    }
+    
     struct responseCreateUser:Codable {
         let status:String
         let list:String??;
