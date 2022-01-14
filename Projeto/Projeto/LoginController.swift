@@ -23,6 +23,7 @@ class LoginController: UIViewController, UITextFieldDelegate {
         if usernameTextBox.text == "" {
             loginButton.isEnabled = false;
         }
+        loginButton.layer.cornerRadius = 10
             
     }
 

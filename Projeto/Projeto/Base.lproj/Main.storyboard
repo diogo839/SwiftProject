@@ -95,7 +95,7 @@
                                                         <rect key="frame" x="182.66666666666669" y="0.0" width="55" height="264"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                         <color key="tintColor" red="0.69019607839999997" green="0.86666666670000003" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <state key="normal" title="Sing up"/>
+                                                        <state key="normal" title="Sign up"/>
                                                         <connections>
                                                             <action selector="SignUpButton:" destination="l6L-vn-3Dw" eventType="touchUpInside" id="uc5-Z0-JKQ"/>
                                                         </connections>
@@ -149,10 +149,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bLX-Rd-Lpe">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="700.33333333333337"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="662.33333333333337"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W1W-4b-J9t">
-                                                <rect key="frame" x="30" y="8" width="354" height="684.33333333333337"/>
+                                                <rect key="frame" x="30" y="8" width="354" height="646.33333333333337"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ICA-th-2nq">
                                                         <rect key="frame" x="0.0" y="0.0" width="354" height="30"/>
@@ -170,15 +170,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hus-bm-yoC">
-                                                        <rect key="frame" x="0.0" y="116" width="354" height="30"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="30" id="IRn-Bj-X5o"/>
-                                                        </constraints>
-                                                    </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cd-E4-2Qd">
-                                                        <rect key="frame" x="0.0" y="154" width="354" height="40"/>
+                                                        <rect key="frame" x="0.0" y="116" width="354" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="Nau-dk-moP"/>
                                                         </constraints>
@@ -187,7 +180,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nf3-9o-LAl">
-                                                        <rect key="frame" x="0.0" y="202" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="164" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="phG-yX-ZgF"/>
                                                         </constraints>
@@ -195,7 +188,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SmartBox ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HoZ-EC-8my">
-                                                        <rect key="frame" x="0.0" y="260" width="354" height="40"/>
+                                                        <rect key="frame" x="0.0" y="222" width="354" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="QrZ-DX-ybS"/>
                                                         </constraints>
@@ -204,7 +197,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="SBGXXXX" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qDq-HT-2h2">
-                                                        <rect key="frame" x="0.0" y="308" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="270" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="otg-8c-1hN"/>
                                                         </constraints>
@@ -212,7 +205,7 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To connect your account with your SmartBox please fill the ID on the field above" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Snc-mw-t3g">
-                                                        <rect key="frame" x="0.0" y="366" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="328" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="4b7-3D-s8s"/>
                                                         </constraints>
@@ -221,7 +214,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name your box" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhU-Ds-46u">
-                                                        <rect key="frame" x="0.0" y="424" width="354" height="40"/>
+                                                        <rect key="frame" x="0.0" y="386" width="354" height="40"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="40" id="qeJ-Ew-UCc"/>
                                                         </constraints>
@@ -230,7 +223,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Pick a name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qZv-Q7-yhs">
-                                                        <rect key="frame" x="0.0" y="472" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="434" width="354" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="SyL-ch-QKb"/>
                                                         </constraints>
@@ -238,20 +231,20 @@
                                                         <textInputTraits key="textInputTraits"/>
                                                     </textField>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwz-Ni-9yD">
-                                                        <rect key="frame" x="0.0" y="530" width="354" height="30"/>
+                                                        <rect key="frame" x="0.0" y="492" width="354" height="30"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="jS7-5b-zwa"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Es4-Nn-CdV">
-                                                        <rect key="frame" x="0.0" y="568" width="354" height="20.333333333333371"/>
+                                                        <rect key="frame" x="0.0" y="530" width="354" height="20.333333333333371"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k2H-Go-8Xb">
-                                                        <rect key="frame" x="0.0" y="596.33333333333337" width="354" height="50"/>
+                                                        <rect key="frame" x="0.0" y="558.33333333333337" width="354" height="50"/>
                                                         <color key="backgroundColor" red="0.73809570069999997" green="0.88433259730000002" blue="0.45058518650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Yct-QL-JFF"/>
@@ -263,7 +256,7 @@
                                                         </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="igL-9h-B9P">
-                                                        <rect key="frame" x="0.0" y="654.33333333333337" width="354" height="30"/>
+                                                        <rect key="frame" x="0.0" y="616.33333333333337" width="354" height="30"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="30" id="dCg-jq-eZD"/>

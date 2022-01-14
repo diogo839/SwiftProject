@@ -33,18 +33,22 @@ class HistoryViewController: UIViewController, ChartViewDelegate, IAxisValueForm
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if row == 0 {
             //Temperature
+            selectedTypeData = "Temperature in ºC"
             setChart(dataPoints: labels, values: dadosTemperatura)
         }
         if row == 1 {
             //Humidity
+            selectedTypeData = "Humidity in %"
             setChart(dataPoints: labels, values: dadosHumidade)
         }
         if row == 2 {
             //Luminosity
+            selectedTypeData = "Luminosity in units"
             setChart(dataPoints: labels, values: dadosLuminosidade)
         }
         if row == 3 {
             //Soil Moisture
+            selectedTypeData = "Soil Moisture in %"
             setChart(dataPoints: labels, values: dadosHumidadeSolo)
         }
     }
@@ -69,6 +73,7 @@ class HistoryViewController: UIViewController, ChartViewDelegate, IAxisValueForm
     var dadosHumidadeSolo = [Double]()
     var dadosLuminosidade = [Double]()
     var pickerData = [String]()
+    var selectedTypeData = ""
     @IBOutlet weak var dataPicker: UIPickerView!
     @IBOutlet weak var viewForChart: UIView!
     weak var axisFormatDelegate: IAxisValueFormatter?
@@ -112,11 +117,13 @@ class HistoryViewController: UIViewController, ChartViewDelegate, IAxisValueForm
             dataEntries.append(dataEntry)
         }
 
-        let chartDataSet = BarChartDataSet(entries: dataEntries)
+        let chartDataSet = BarChartDataSet(entries: dataEntries, label: selectedTypeData)
+        chartDataSet.colors = [UIColor.init(red: (176/255), green: (221/255), blue: (102/255), alpha: 1)]
 
         let chartData = BarChartData()
         barChart.xAxis.valueFormatter = IndexAxisValueFormatter(values: labels)
         chartData.addDataSet(chartDataSet)
+
         barChart.data = chartData
     }
     
@@ -148,7 +155,9 @@ class HistoryViewController: UIViewController, ChartViewDelegate, IAxisValueForm
             print(convertDateFormat(inputDate: dado.Data))
 
         }
+        selectedTypeData = "Temperature in ºC"
         setChart(dataPoints: labels, values: dadosTemperatura)
+        
     }
     
     private func GetHistory(){

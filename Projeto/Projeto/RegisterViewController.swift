@@ -25,7 +25,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         usernameField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
         smartBoxIDField.addTarget(self, action: #selector(textChanged(_:)), for: .editingChanged)
                
-        
+        createButton.layer.cornerRadius = 10
         if usernameField.text == "" && smartBoxIDField.text == "" {
             createButton.isEnabled = false
         }
@@ -87,12 +87,18 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                 if responsePostRequest.status == "sucess"{
                    
                     DispatchQueue.main.async {
-                        let defaults = UserDefaults.standard
-                        defaults.register(defaults: ["token":""])
-                        defaults.register(defaults: ["username":""])
-                        defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
-                        defaults.set(BoxName, forKey:"username" )
-                        self.redirectToHomepage()
+                        let refreshAlert = UIAlertController(title: "Success", message: "Your account was created successfully. You will now be redirected to homepage.", preferredStyle: UIAlertController.Style.alert)
+
+                        refreshAlert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { (action: UIAlertAction!) in
+                                                                let defaults = UserDefaults.standard
+                                                                defaults.register(defaults: ["token":""])
+                                                                defaults.register(defaults: ["username":""])
+                                                                defaults.set(responsePostRequest.token ?? nil, forKey:"token" )
+                                                                defaults.set(BoxName, forKey:"username" )
+                                                                self.redirectToHomepage()              }))
+
+                        self.present(refreshAlert, animated: true, completion: nil)
+                        
                     }
                 }else{
                     DispatchQueue.main.async {
