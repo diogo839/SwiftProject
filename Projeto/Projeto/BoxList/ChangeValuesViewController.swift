@@ -144,8 +144,7 @@ class ChangeValuesViewController: UIViewController, UITextFieldDelegate {
                 }else{
                     
                     DispatchQueue.main.async {
-                        //self.errorLabel.text=responsePostRequest.status
-                        //self.errorLabel.isHidden = false
+                        
                     }
                 }
             }catch{
